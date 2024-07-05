@@ -1,0 +1,13 @@
+@import url(../../../stylesheets/context_menu.css);
+
+.context-menu-selection {
+  background-color:#e9f4ff !important;
+  color:#000000 !important;
+}
+.context-menu-selection a, .context-menu-selection a:hover {
+  color:#0152cc !important;
+}
+.context-menu-selection:hover {
+  background-color:#e9f4ff !important;
+  color:#000000  !important;
+}
