@@ -23,7 +23,7 @@
   width: calc(100%);
   padding: 0px;
   margin: 0px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   padding-right: 10px;
 }
 
@@ -41,16 +41,17 @@
 }
 
 div#userprofile {
-  width: 29px;
-  height: 29px;
+  /* width: 29px;
+  height: 29px; */
   float: right;
   padding-left: 5px;
-  padding-top: 1px;
+  margin-right: 0.6%;
+  padding-bottom: 3px;
 }
 
 div.profileicon {
-  width: 29px;
-  height: 29px;
+  /* width: 29px;
+  height: 29px; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -62,11 +63,11 @@ div.profileicon {
 }
 
 div#profilemenu {
-  position: relative;
+  position: absolute;
   z-index: 999;
   width: 135px;
-  right: 105px;
-  height: 100px;
+  right: 10px;
+  /* height: 100px; */
   background-color: #FFFFFF;
   padding: 5px 0 5px 0;
   border-radius: 5px;
@@ -116,6 +117,8 @@ div#profilemenu {
 #header{
   background-color: #FFFFFF;
   color: #1c3051;
+  width: 32%;
+  text-align: center;
 }
 
 #topmenu-nav{
@@ -291,8 +294,8 @@ input.autocomplete {
 
 .profileicon.account{
   padding: 3px;
-  width: 32px;
-  height: 32px;
+  width: 29px;
+  height: 29px;
 }
 
 #clockINOUT:hover, #issueLog:hover, #notification:hover, #project-jump:hover,
@@ -315,9 +318,9 @@ input.autocomplete {
 #header h1{
   margin: 0px;
 }
-#header{
+/* #header{
   display: none;
-}
+} */
 
 #main-menu{
   /* position: fixed;
@@ -656,6 +659,11 @@ table.list thead th {
     border-color: #e6e6e6;
     padding: 7px;
 }
+
+table.list thead tr{
+  height: 42px !important;
+}
+
 table.list td.checkbox {
     width: 15px;
     padding: 2px 0 0 0;
@@ -686,7 +694,7 @@ table.list th, .table-list-header {
   padding: 1px;
   white-space:nowrap;
   font-weight:bold;
-  height: 40px;
+  /* height: 40px; */
   color: #6b778c;
 }
 
@@ -713,8 +721,9 @@ table.list td a:active {
 
 table.list th a:hover, table.list th a:active{ color: #6b778c; text-decoration: underline;}
 
-table.list:not(.odd-even) tbody tr:nth-child(odd), .odd, #issue-changesets div.changeset:nth-child(odd) { background-color:#ffffff; }
-table.list:not(.odd-even) tbody tr:nth-child(even), .even, #issue-changesets div.changeset:nth-child(even) { background-color: rgb(255, 255, 255); }
+table.list:not(.odd-even) tbody tr:nth-child(odd), .odd, #issue-changesets div.changeset:nth-child(odd) { background-color:#ffffff; height: 42px !important;}
+table.list:not(.odd-even) tbody tr:nth-child(even), .even, #issue-changesets div.changeset:nth-child(even) { background-color: rgb(255, 255, 255); 
+  height: 42px !important; }
 table.list:not(.odd-even) tbody tr:nth-child(odd):hover, .odd:hover, #issue-changesets div.changeset:nth-child(odd):hover,
 table.list:not(.odd-even) tbody tr:nth-child(even):hover, .even:hover, #issue-changesets div.changeset:nth-child(even):hover { background-color:#eeeeee; }
 
@@ -859,7 +868,7 @@ form#wkdelivery_edit table td , form#wkshipment_edit table td {
 /* Basic styles for the text box */
 input[type="text"], input[type="date"], input[type="password"]{
 	background-color: #fff;
-	height: 38px;
+	height: 32px;
 }
 
 /* Hover effect for the text box */
@@ -880,4 +889,38 @@ input[type='radio'], input[type='checkbox'] {
 
 #context-menu:hover, #context-menu a:hover{
   color: #016bff !important;
+}
+
+select {
+  height: 32px !important;
+}
+
+select#time_entry__activity_id{
+  width: auto !important;
+}
+
+input:focus, select:focus, textarea:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="password"]:focus {
+  border: 2px solid #1D7AFC;
+  color: #000;
+}
+
+input, select, textarea, button {
+  border-radius: 5px !important;
+}
+
+select[multiple=multiple] {
+  height: auto !important;
+}
+
+.select2-container--default .select2-selection--single{
+  border-radius: 5px !important;
+  height: 32px !important;
+}
+
+input.save, input.create {
+  background-color: #2ECC71 !important;
+}
+
+input.submit {
+  background-color: #E74C3C !important;
 }

@@ -1,11 +1,11 @@
-// add file in html header
-function addJSScript(val){
-  const script = document.createElement("script");
-  script.src=val;
-  document.head.prepend(script);
-};
-addJSScript("/themes/sidebar-white/javascripts/semantic.min.js");
-addJSScript("/themes/sidebar-white/javascripts/dropdown.min.js");
+// // add file in html header
+// function addJSScript(val){
+//   const script = document.createElement("script");
+//   script.src=val;
+//   document.head.prepend(script);
+// };
+// addJSScript("/themes/sidebar-white/javascripts/semantic.min.js");
+// addJSScript("/themes/sidebar-white/javascripts/dropdown.min.js");
 
 const projIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" style="fill: #44546f"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707-1.414-1.414z"></path></svg>';
 const searchIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" style="fill: #44546f;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>';
@@ -104,11 +104,11 @@ const defaultMenuSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" heigh
 const timerStartIcon = '<svg width="29px" height="29px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#90c93e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.25 2.75C9.25 2.33579 9.58579 2 10 2H14C14.4142 2 14.75 2.33579 14.75 2.75C14.75 3.16421 14.4142 3.5 14 3.5H10C9.58579 3.5 9.25 3.16421 9.25 2.75Z" fill="#90c93e"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M21 13.75C21 18.7206 16.9706 22.75 12 22.75C7.02944 22.75 3 18.7206 3 13.75C3 8.77944 7.02944 4.75 12 4.75C16.9706 4.75 21 8.77944 21 13.75ZM13.0261 11.0249C12.7888 10.8583 12.5201 10.686 12.2419 10.5168C11.1695 9.86466 10.6333 9.53859 10.1524 9.8996C9.6715 10.2606 9.62779 11.0164 9.54038 12.5278C9.51566 12.9553 9.5 13.3743 9.5 13.75C9.5 14.1257 9.51566 14.5447 9.54038 14.9722C9.62779 16.4836 9.6715 17.2394 10.1524 17.6004C10.6333 17.9614 11.1695 17.6353 12.2419 16.9832C12.5201 16.814 12.7888 16.6417 13.0261 16.4751C13.2966 16.2852 13.5909 16.0573 13.8876 15.8152C14.9625 14.9383 15.5 14.4999 15.5 13.75C15.5 13.0001 14.9625 12.5617 13.8876 11.6848C13.5909 11.4427 13.2966 11.2148 13.0261 11.0249Z" fill="#90c93e"></path> </g></svg>';
 const timerStopIcon = '<svg width="29px" height="29px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#cc0101"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M21 13.75C21 18.7206 16.9706 22.75 12 22.75C7.02944 22.75 3 18.7206 3 13.75C3 8.77944 7.02944 4.75 12 4.75C16.9706 4.75 21 8.77944 21 13.75ZM11 16.25V11.25C11 10.7841 11 10.5511 10.9239 10.3673C10.8224 10.1223 10.6277 9.92761 10.3827 9.82612C10.1989 9.75 9.96594 9.75 9.5 9.75C9.03406 9.75 8.80109 9.75 8.61732 9.82612C8.37229 9.92761 8.17761 10.1223 8.07612 10.3673C8 10.5511 8 10.7841 8 11.25V16.25C8 16.7159 8 16.9489 8.07612 17.1327C8.17761 17.3777 8.37229 17.5724 8.61732 17.6739C8.80109 17.75 9.03406 17.75 9.5 17.75C9.96594 17.75 10.1989 17.75 10.3827 17.6739C10.6277 17.5724 10.8224 17.3777 10.9239 17.1327C11 16.9489 11 16.7159 11 16.25ZM16 16.25V11.25C16 10.7841 16 10.5511 15.9239 10.3673C15.8224 10.1223 15.6277 9.92761 15.3827 9.82612C15.1989 9.75 14.9659 9.75 14.5 9.75C14.0341 9.75 13.8011 9.75 13.6173 9.82612C13.3723 9.92761 13.1776 10.1223 13.0761 10.3673C13 10.5511 13 10.7841 13 11.25V16.25C13 16.7159 13 16.9489 13.0761 17.1327C13.1776 17.3777 13.3723 17.5724 13.6173 17.6739C13.8011 17.75 14.0341 17.75 14.5 17.75C14.9659 17.75 15.1989 17.75 15.3827 17.6739C15.6277 17.5724 15.8224 17.3777 15.9239 17.1327C16 16.9489 16 16.7159 16 16.25Z" fill="#cc0101"></path> <path d="M10 2C9.58579 2 9.25 2.33579 9.25 2.75C9.25 3.16421 9.58579 3.5 10 3.5H14C14.4142 3.5 14.75 3.16421 14.75 2.75C14.75 2.33579 14.4142 2 14 2H10Z" fill="#cc0101"></path> </g></svg>';
 
-const issueStartIcon= '<svg fill="#90c93e" height="25" width="25" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 491.50 491.50" xml:space="preserve" stroke="#90c93e" stroke-width="0.004915"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.983"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M348.1,245.7c-67.8,0-122.9,55.1-122.9,122.9s55.1,122.9,122.9,122.9S471,436.4,471,368.6S415.9,245.7,348.1,245.7z M403.5,362.6l-41,41c-4,4-9.2,6-14.5,6c-5.2,0-10.5-2-14.5-6L313,383.1c-8-8-8-21,0-29s21-8,29,0l6,6l26.5-26.5c8-8,21-8,29,0 C411.5,341.7,411.5,354.6,403.5,362.6z"></path> </g> </g> <g> <g> <path d="M385.3,41h-57.7v-9.8c0-17.2-14-31.2-31.2-31.2H154c-17.2,0-31.2,14-31.2,31.2v9.7H65.2c-24.7,0-44.7,20.1-44.7,44.7 v361.1c0,24.7,20.1,44.7,44.7,44.7h174.9c-34.2-29.9-55.8-73.8-55.8-122.8h-81.9c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5 h81.9c1.8,0,3.4,0.6,5.1,1c3.8-14.9,9.5-29,17-42h-83.6c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5h102.4 c4.1,0,7.7,1.5,10.9,3.6c29.3-27.5,68.6-44.6,112-44.6c29.9,0,57.8,8.2,81.9,22.2V85.7C430,61,409.9,41,385.3,41z M163.8,184.3 h-41c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h41c11.3,0,20.5,9.2,20.5,20.5C184.3,175.1,175.1,184.3,163.8,184.3z M163.8,81.9v-41h122.9v41H163.8z M327.6,184.3h-81.9c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h81.9 c11.3,0,20.5,9.2,20.5,20.5C348.1,175.1,338.9,184.3,327.6,184.3z"></path> </g> </g> </g></svg>';
+const issueStartIcon= '<svg fill="#90c93e" height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 491.50 491.50" xml:space="preserve" stroke="#90c93e" stroke-width="0.004915"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.983"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M348.1,245.7c-67.8,0-122.9,55.1-122.9,122.9s55.1,122.9,122.9,122.9S471,436.4,471,368.6S415.9,245.7,348.1,245.7z M403.5,362.6l-41,41c-4,4-9.2,6-14.5,6c-5.2,0-10.5-2-14.5-6L313,383.1c-8-8-8-21,0-29s21-8,29,0l6,6l26.5-26.5c8-8,21-8,29,0 C411.5,341.7,411.5,354.6,403.5,362.6z"></path> </g> </g> <g> <g> <path d="M385.3,41h-57.7v-9.8c0-17.2-14-31.2-31.2-31.2H154c-17.2,0-31.2,14-31.2,31.2v9.7H65.2c-24.7,0-44.7,20.1-44.7,44.7 v361.1c0,24.7,20.1,44.7,44.7,44.7h174.9c-34.2-29.9-55.8-73.8-55.8-122.8h-81.9c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5 h81.9c1.8,0,3.4,0.6,5.1,1c3.8-14.9,9.5-29,17-42h-83.6c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5h102.4 c4.1,0,7.7,1.5,10.9,3.6c29.3-27.5,68.6-44.6,112-44.6c29.9,0,57.8,8.2,81.9,22.2V85.7C430,61,409.9,41,385.3,41z M163.8,184.3 h-41c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h41c11.3,0,20.5,9.2,20.5,20.5C184.3,175.1,175.1,184.3,163.8,184.3z M163.8,81.9v-41h122.9v41H163.8z M327.6,184.3h-81.9c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h81.9 c11.3,0,20.5,9.2,20.5,20.5C348.1,175.1,338.9,184.3,327.6,184.3z"></path> </g> </g> </g></svg>';
 
-const issueStopIcon= '<svg fill="#cc0101" height="29px" width="29px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 491.50 491.50" xml:space="preserve" stroke="#cc0101" stroke-width="0.004915"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.983"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M348.1,245.7c-67.8,0-122.9,55.1-122.9,122.9s55.1,122.9,122.9,122.9S471,436.4,471,368.6S415.9,245.7,348.1,245.7z M403.5,362.6l-41,41c-4,4-9.2,6-14.5,6c-5.2,0-10.5-2-14.5-6L313,383.1c-8-8-8-21,0-29s21-8,29,0l6,6l26.5-26.5c8-8,21-8,29,0 C411.5,341.7,411.5,354.6,403.5,362.6z"></path> </g> </g> <g> <g> <path d="M385.3,41h-57.7v-9.8c0-17.2-14-31.2-31.2-31.2H154c-17.2,0-31.2,14-31.2,31.2v9.7H65.2c-24.7,0-44.7,20.1-44.7,44.7 v361.1c0,24.7,20.1,44.7,44.7,44.7h174.9c-34.2-29.9-55.8-73.8-55.8-122.8h-81.9c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5 h81.9c1.8,0,3.4,0.6,5.1,1c3.8-14.9,9.5-29,17-42h-83.6c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5h102.4 c4.1,0,7.7,1.5,10.9,3.6c29.3-27.5,68.6-44.6,112-44.6c29.9,0,57.8,8.2,81.9,22.2V85.7C430,61,409.9,41,385.3,41z M163.8,184.3 h-41c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h41c11.3,0,20.5,9.2,20.5,20.5C184.3,175.1,175.1,184.3,163.8,184.3z M163.8,81.9v-41h122.9v41H163.8z M327.6,184.3h-81.9c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h81.9 c11.3,0,20.5,9.2,20.5,20.5C348.1,175.1,338.9,184.3,327.6,184.3z"></path> </g> </g> </g></svg>';
+const issueStopIcon= '<svg fill="#cc0101" height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 491.50 491.50" xml:space="preserve" stroke="#cc0101" stroke-width="0.004915"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.983"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M348.1,245.7c-67.8,0-122.9,55.1-122.9,122.9s55.1,122.9,122.9,122.9S471,436.4,471,368.6S415.9,245.7,348.1,245.7z M403.5,362.6l-41,41c-4,4-9.2,6-14.5,6c-5.2,0-10.5-2-14.5-6L313,383.1c-8-8-8-21,0-29s21-8,29,0l6,6l26.5-26.5c8-8,21-8,29,0 C411.5,341.7,411.5,354.6,403.5,362.6z"></path> </g> </g> <g> <g> <path d="M385.3,41h-57.7v-9.8c0-17.2-14-31.2-31.2-31.2H154c-17.2,0-31.2,14-31.2,31.2v9.7H65.2c-24.7,0-44.7,20.1-44.7,44.7 v361.1c0,24.7,20.1,44.7,44.7,44.7h174.9c-34.2-29.9-55.8-73.8-55.8-122.8h-81.9c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5 h81.9c1.8,0,3.4,0.6,5.1,1c3.8-14.9,9.5-29,17-42h-83.6c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5h102.4 c4.1,0,7.7,1.5,10.9,3.6c29.3-27.5,68.6-44.6,112-44.6c29.9,0,57.8,8.2,81.9,22.2V85.7C430,61,409.9,41,385.3,41z M163.8,184.3 h-41c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h41c11.3,0,20.5,9.2,20.5,20.5C184.3,175.1,175.1,184.3,163.8,184.3z M163.8,81.9v-41h122.9v41H163.8z M327.6,184.3h-81.9c-11.3,0-20.5-9.2-20.5-20.5c0-11.3,9.2-20.5,20.5-20.5h81.9 c11.3,0,20.5,9.2,20.5,20.5C348.1,175.1,338.9,184.3,327.6,184.3z"></path> </g> </g> </g></svg>';
 
-const notifIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 448 512" style="fill: #44546f"><path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/></svg>';
+const notifIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="25px" width="25px" viewBox="0 0 448 512" style="fill: #44546f"><path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/></svg>';
 
 const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 384 512" style="fill: #5d5d5d"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
 
@@ -307,16 +307,19 @@ $(document).ready(function(){
   //For status badge function
   fetchAndBadgeLabel('/issue_statuses.json', 'table.list', 'Status');
 
-  //TO load semantic UI dropdown after document load
-  setTimeout(renderDropdown, 100);
+  // //TO load semantic UI dropdown after document load
+  // setTimeout(renderDropdown, 100);
 
-  //TO load semantic UI dropdown on onchange
-  $('input, select, a ,legend').on('click change', function() {
-    setTimeout(renderDropdown, 200);
-  });
+  // //TO load semantic UI dropdown on onchange
+  // $('input, select, a ,legend').on('click change', function() {
+  //   setTimeout(renderDropdown, 200);
+  // });
 
   // Add Redmine Logo
   $(".home").parents('ul').prepend( '<li class="redmine-logo"><a id="redmine-home" href="/"><svg></svg></a></li>');
+
+  $('.fa.fa-bell').parents('span').append(notifIcon);
+  $('.fa.fa-bell').remove();
 
   //Add Timer Icon
   const clockin = $('#clockin').css('display');
@@ -335,9 +338,6 @@ $(document).ready(function(){
     }
   });
   imgObserver.observe($('#issueImg img')[0], { attributes: true });
-
-  $('.fa.fa-bell').parents('span').append(notifIcon);
-  $('.fa.fa-bell').remove();
 
   var selectObserver = new MutationObserver(function(mutationsList) {
     mutationsList.forEach(function(mutation) {
@@ -372,23 +372,39 @@ $(document).ready(function(){
     }
   });
 
-  //Issue form DD Rerender
-  if($('#issue-form').length > 0){
-    const IssueFormObserver = new MutationObserver(function(mutationsList, observer) {
-      for(let mutation of mutationsList) {
-        if (mutation.type === 'childList' || mutation.type === 'subtree') {
-          renderDropdown();
-        }
-      }
-    });
-    IssueFormObserver.observe($('#issue-form')[0], { childList: true, subtree: true, });
-  }
+  // //Issue form DD Rerender
+  // if($('#issue-form').length > 0){
+  //   const IssueFormObserver = new MutationObserver(function(mutationsList, observer) {
+  //     for(let mutation of mutationsList) {
+  //       if (mutation.type === 'childList' || mutation.type === 'subtree') {
+  //         renderDropdown();
+  //       }
+  //     }
+  //   });
+  //   IssueFormObserver.observe($('#issue-form')[0], { childList: true, subtree: true, });
+  // }
 
   //Redmine Right click list options
   setTimeout(observeListOpt, 200);
 
 	//accordion section
 	if($("#accordion").length > 0) $("#accordion").accordion();
+
+  //add header after topmenu nav
+  $('#topmenu-nav').after($('#header'));
+
+  // Select all buttons and input type="button"
+  const buttons = document.querySelectorAll('input[type="submit"]');
+  console.log('hdhiddhi', buttons);
+  // Loop through each button
+  buttons.forEach(button => {
+  console.log('button.value', button.value);
+  const className = button.value.replace(/\s+/g, '_').toLowerCase();
+  console.log('className', className);
+  // Add a class with the name of the button's value
+  button.classList.add(className);
+});
+
 });
 
 function observeListOpt(){
@@ -430,26 +446,26 @@ function setIssueStartIcon(){
   $('#issueImg').prepend(issueSrc.includes('finish') ? issueStopIcon : issueStartIcon);
 }
 
-function renderDropdown(){
-  $('select:visible').each(function(){
-    if ($(this).parents('span.query-columns').length == 0
-    && !(this.name || '').includes('invoice_item_id')
-    && $(this).prop('id') !== 'time_entry__issue_id'
-    && $(this).prop('id') !== 'referred_by'
-    && (!$(this).prop('multiple') || (this.name || '').includes('status'))){
-      const blank = $(this).find('option').filter(function() {
-        return $(this).val() === '';
-      }).length > 0;
-      $(this).dropdown({
-        clearable: blank
-      });
-    }
-    if ($(this).prop('multiple')) {
-      $(this).parent('div').css('width','300px');
-      replaceCloseIcon();
-    }
-  });
-};
+// function renderDropdown(){
+//   $('select:visible').each(function(){
+//     if ($(this).parents('span.query-columns').length == 0
+//     && !(this.name || '').includes('invoice_item_id')
+//     && $(this).prop('id') !== 'time_entry__issue_id'
+//     && $(this).prop('id') !== 'referred_by'
+//     && (!$(this).prop('multiple') || (this.name || '').includes('status'))){
+//       const blank = $(this).find('option').filter(function() {
+//         return $(this).val() === '';
+//       }).length > 0;
+//       $(this).dropdown({
+//         clearable: blank
+//       });
+//     }
+//     if ($(this).prop('multiple')) {
+//       $(this).parent('div').css('width','300px');
+//       replaceCloseIcon();
+//     }
+//   });
+// };
 
 function setNavLeft(){
   $('#left-nav').addClass('sidenav-left');
