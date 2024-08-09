@@ -1,12 +1,9 @@
 @import url(../../../stylesheets/application.css);
-@import url(./semantic.min.css);
-@import url(./dropdown.min.css);
-@import url(../fonts/segoe-ui-4/style.css);
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&display=swap);
+@import url(./fonts/roboto/roboto.css);
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oxygen:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 #top-menu{
   background-color: var(--ds-surface, #FFFFFF);
@@ -158,7 +155,6 @@ div#profilemenu {
   display: inline-flex;
   font-size: inherit;
   font-style: normal;
-  font-family: inherit;
   font-weight: var(--ds-font-weight-medium, 500);
   max-width: 100%;
   position: relative;
@@ -575,38 +571,8 @@ input.autocomplete {
   justify-content: center;
 }
 
-
-
-
-
-
-
-/* TODO: Need to add close icon for some sidebar menus */
-/* .close-icon{
-  opacity: 1;
-  width: 15px;
-  height: 15px;
-  background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20style%3D%22fill%3A%20%2344546f%3B%22%3E%3Cpath%20d%3D%22M21%205a2%202%200%200%200-2-2H5a2%202%200%200%200-2%202v14a2%202%200%200%200%202%202h14a2%202%200%200%200%202-2V5zm-4.793%209.793-1.414%201.414L12%2013.414l-2.793%202.793-1.414-1.414L10.586%2012%207.793%209.207l1.414-1.414L12%2010.586l2.793-2.793%201.414%201.414L13.414%2012l2.793%202.793z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
-  background-repeat: no-repeat;
-  background-color: #FFFFFF;
-  border: 1px solid #000;
-} */
-
-/* .close-icon:hover{
-  background-color: #E9EAEC;
-} */
-
-/* #sidebar .row{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-} */
-
-/* table changes */
 h1, h2, h3, h4, h5, h6 {
-  font-family: Roboto,'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans','Helvetica Neue', sans-serif;
-  padding: 2px 10px 1px 0px;
-  margin: 0 0 10px 0;
+  font-family: Roboto, 'Fira Sans', Oxygen, 'Open Sans', Ubuntu, sans-serif !important;
 }
 
 #content h1, h2, h3, h4, h5, h6 {
@@ -627,14 +593,13 @@ h4 {
   font-weight:normal;
 }
 
-body {
-    background-color: #fff;
-    font-family: Roboto,'Segoe UI',Oxygen,Ubuntu,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
-    color: #000000;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    background-color: #FFFFFF;
+html, body{
+  font-family: Roboto, 'Fira Sans', Oxygen, 'Open Sans', Ubuntu, sans-serif !important;
+  color: #172b4d;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: #FFFFFF;
 }
 
 table.list td{
@@ -642,12 +607,6 @@ table.list td{
     border-width: 0px 0px 1px 1px;
     border-style: solid;
     border-color: #e6e6e6;
-    padding: 7px;
-    font-family: Roboto,'Segoe UI',Oxygen,Ubuntu,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    color: #172b4d;
     text-align:left;
     vertical-align:middle;
 }
@@ -670,11 +629,6 @@ table.list td.checkbox {
     text-align: center;
 }
 
-/* Issues grid styles by priorities (provided by Wynn Netherland) */
-/* table.list tr.issue a {
-  color: #0052CC;
-} */
-
 table.list, .table-list {
   border:none;
   border-width:  0px 1px 0px 0px;
@@ -688,6 +642,7 @@ table.list, .table-list {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 table.list th, .table-list-header {
   text-align:left;
   background-color:#f7f8f9;
@@ -722,41 +677,20 @@ table.list td a:active {
 table.list th a:hover, table.list th a:active{ color: #6b778c; text-decoration: underline;}
 
 table.list:not(.odd-even) tbody tr:nth-child(odd), .odd, #issue-changesets div.changeset:nth-child(odd) { background-color:#ffffff; height: 42px !important;}
-table.list:not(.odd-even) tbody tr:nth-child(even), .even, #issue-changesets div.changeset:nth-child(even) { background-color: rgb(255, 255, 255); 
+table.list:not(.odd-even) tbody tr:nth-child(even), .even, #issue-changesets div.changeset:nth-child(even) { background-color: rgb(255, 255, 255);
   height: 42px !important; }
 table.list:not(.odd-even) tbody tr:nth-child(odd):hover, .odd:hover, #issue-changesets div.changeset:nth-child(odd):hover,
 table.list:not(.odd-even) tbody tr:nth-child(even):hover, .even:hover, #issue-changesets div.changeset:nth-child(even):hover { background-color:#eeeeee; }
 
-.badge-box {
-	font-weight: 600;
-	padding: 5px 10px;
-	min-width: 19px;
-	border-radius: 6px;
-	text-align: center!important;
-	display: inline-block;
-}
-
-/*6 color for default status */
-.color-combo-1 { color: #000; background-color: #87c4ff; } /* Soft Beach status-New */
-.color-combo-2 { color: #000; background-color: #ffde22; } /* Yellow, Red/Pink/Orange status-Assigned*/
-.color-combo-3 { color: #fff; background-color: #a663ee; } /* Purple 90’s status-Resolved */
-.color-combo-4 { color: #fff; background-color: #ae5d07; } /* Soft Beach status-Feedback*/
-.color-combo-5 { color: #000; background-color: #ff8e81; } /* Bright Power status-Closed */
-.color-combo-6 { color: #fff; background-color: #dc2424; } /* Crimson Peak status-Rejected*/
-.color-combo-7 { color: #000; background-color: #4be191; } /* Pink, Green, and Purple */
-.color-combo-8 { color: #000; background-color: #ff6347; } /* Tomato Splash */
-.color-combo-9 { color: #fff; background-color: #4682b4; } /* Steel Blue */
-.color-combo-10 { color: #000; background-color: #7fff00; } /* Chartreuse Burst */
-.color-combo-11 { color: #fff; background-color: #874bbf; } /* Blue Violet */
-.color-combo-12 { color: #000; background-color: #ffa500; } /* Orange Zest */
-.color-combo-13 { color: #000; background-color: #87ffbf; } /* Rethink */
-.color-combo-14 { color: #000; background-color: #adff2f; } /* Green Yellow */
-.color-combo-15 { color: #000; background-color: #ff98cc; } /* Hot Pink Dream */
-
-/* dropdown issue fix*/
-
-html>body .tabular p {
- overflow:visible;
+[class^="colorcode-box"]{
+  font-weight: 500;
+  padding: 4px;
+  border-radius: 5px;
+  text-align: center !important;
+  height: 14px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
 form#query_form fieldset .wk-contextual {
@@ -806,7 +740,6 @@ input[type="submit"], button {
 	display: inline-flex;
 	font-size: inherit;
 	font-style: normal;
-	font-family: inherit;
 	font-weight: var(--ds-font-weight-medium, 500);
 	max-width: 100%;
 	position: relative;
