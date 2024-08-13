@@ -413,17 +413,13 @@ $(document).ready(function(){
   //add header after topmenu nav
   $('#topmenu-nav').after($('#header'));
 
-  // Select all buttons and input type="button"
-  const buttons = document.querySelectorAll('input[type="submit"]');
-  console.log('hdhiddhi', buttons);
-  // Loop through each button
-  buttons.forEach(button => {
-  console.log('button.value', button.value);
-  const className = button.value.replace(/\s+/g, '_').toLowerCase();
-  console.log('className', className);
-  // Add a class with the name of the button's value
-  button.classList.add(className);
-});
+  // Select all buttons and input type="submit"
+  $('input[type="submit"]').each(function() {
+    // Replace spaces with underscores and convert to lowercase
+    const className = $(this).val().replace(/\s+/g, '_').toLowerCase();
+    // Add a class with the name of the button's value
+    $(this).addClass(className);
+  });
 
   //For Redmine columns colorcode
   $('td.status').each(function(){

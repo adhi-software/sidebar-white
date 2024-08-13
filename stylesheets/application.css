@@ -850,10 +850,18 @@ select[multiple=multiple] {
   height: 32px !important;
 }
 
-input.save, input.create {
-  background-color: #2ECC71 !important;
+input.approve, input.submit {
+  background-color: #2ECC71;
 }
 
-input.submit {
-  background-color: #E74C3C !important;
+input.reject {
+  background-color: #c6131b;
+}
+
+input.approve:hover, input.submit:hover {
+  background-color: #08db60;
+}
+
+input.reject:hover {
+  background-color: #ff0008;
 }
