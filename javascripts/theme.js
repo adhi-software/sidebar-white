@@ -105,313 +105,299 @@ const notifIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="25px" width="
 
   const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 384 512" style="fill: #5d5d5d"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
 
-const definedColors = [
-  { background: '#3498DB', color: '#FFFFFF' },
-  { background: '#BDC3C7', color: '#000000' },
-  { background: '#E74C3C', color: '#FFFFFF' },
-  { background: '#2ECC71', color: '#000000' },
-  { background: '#F39C12', color: '#000000' },
-  { background: '#8E44AD', color: '#FFFFFF' },
-  { background: '#4ECDC4', color: '#000000' },
-  { background: '#F1C40F', color: '#000000' }
+const colorCodeColors = [
+  { "background": "#3498DB", "color": "#FFFFFF" },
+  { "background": "#E74C3C", "color": "#FFFFFF" },
+  { "background": "#2ECC71", "color": "#000000" },
+  { "background": "#9B59B6", "color": "#FFFFFF" },
+  { "background": "#F1C40F", "color": "#000000" },
+  { "background": "#1ABC9C", "color": "#000000" },
+  { "background": "#E67E22", "color": "#FFFFFF" },
+  { "background": "#34495E", "color": "#FFFFFF" },
+  { "background": "#7F8C8D", "color": "#FFFFFF" },
+  { "background": "#C0392B", "color": "#FFFFFF" },
+  { "background": "#2980B9", "color": "#FFFFFF" },
+  { "background": "#27AE60", "color": "#FFFFFF" },
+  { "background": "#8E44AD", "color": "#FFFFFF" },
+  { "background": "#F39C12", "color": "#000000" },
+  { "background": "#D35400", "color": "#FFFFFF" },
+  { "background": "#2C3E50", "color": "#FFFFFF" },
+  { "background": "#BDC3C7", "color": "#000000" },
+  { "background": "#A93226", "color": "#FFFFFF" },
+  { "background": "#1F618D", "color": "#FFFFFF" },
+  { "background": "#196F3D", "color": "#FFFFFF" },
+  { "background": "#6C3483", "color": "#FFFFFF" },
+  { "background": "#B7950B", "color": "#FFFFFF" },
+  { "background": "#117864", "color": "#FFFFFF" },
+  { "background": "#AF601A", "color": "#FFFFFF" },
+  { "background": "#17202A", "color": "#FFFFFF" },
+  { "background": "#7B7D7D", "color": "#FFFFFF" },
+  { "background": "#641E16", "color": "#FFFFFF" },
+  { "background": "#154360", "color": "#FFFFFF" },
+  { "background": "#145A32", "color": "#FFFFFF" },
+  { "background": "#512E5F", "color": "#FFFFFF" },
+  { "background": "#7D6608", "color": "#FFFFFF" },
+  { "background": "#1C2833", "color": "#FFFFFF" },
+  { "background": "#566573", "color": "#FFFFFF" },
+  { "background": "#7B241C", "color": "#FFFFFF" },
+  { "background": "#2471A3", "color": "#FFFFFF" },
+  { "background": "#52BE80", "color": "#000000" },
+  { "background": "#BB8FCE", "color": "#000000" },
+  { "background": "#F7DC6F", "color": "#000000" },
+  { "background": "#76D7C4", "color": "#000000" },
+  { "background": "#F1948A", "color": "#000000" },
+  { "background": "#5D6D7E", "color": "#FFFFFF" },
+  { "background": "#212F3C", "color": "#FFFFFF" },
+  { "background": "#6E2C00", "color": "#FFFFFF" },
+  { "background": "#4ECDC4", "color": "#000000" },
+  { "background": "#95A5A6", "color": "#000000" },
+  { "background": "#4A235A", "color": "#FFFFFF" },
+  { "background": "#4D5656", "color": "#FFFFFF" },
+  { "background": "#117A65", "color": "#FFFFFF" },
+  { "background": "#1A5276", "color": "#FFFFFF" },
+  { "background": "#935116", "color": "#FFFFFF" },
 ];
-
-const randomColors = [
-  { background: '#3498DB', color: '#FFFFFF' },
-  { background: '#F1C40F', color: '#000000' },
-  { background: '#2ECC71', color: '#000000' },
-  { background: '#95A5A6', color: '#000000' },
-  { background: '#F39C12', color: '#000000' },
-  { background: '#E74C3C', color: '#FFFFFF' },
-  { background: '#4ECDC4', color: '#000000' },
-  { background: '#F7DC6F', color: '#000000' },
-  { background: '#34495E', color: '#FFFFFF' },
-  { background: '#080706', color: '#FFFFFF' },
-  { background: '#1ABC9C', color: '#000000' },
-  { background: '#7F8C8D', color: '#FFFFFF' },
-  { background: '#16A085', color: '#FFFFFF' },
-  { background: '#2980B9', color: '#FFFFFF' },
-  { background: '#8E44AD', color: '#FFFFFF' },
-  { background: '#2C3E50', color: '#FFFFFF' },
-  { background: '#45B7D1', color: '#FFFFFF' },
-  { background: '#F0F3F4', color: '#000000' },
-  { background: '#E67E22', color: '#FFFFFF' },
-  { background: '#1B4F72', color: '#FFFFFF' },
-  { background: '#4A235A', color: '#FFFFFF' },
-  { background: '#641E16', color: '#FFFFFF' },
-  { background: '#7D6608', color: '#FFFFFF' },
-  { background: '#78281F', color: '#FFFFFF' },
-  { background: '#4D5656', color: '#FFFFFF' },
-  { background: '#117A65', color: '#FFFFFF' },
-  { background: '#633974', color: '#FFFFFF' },
-  { background: '#1A5276', color: '#FFFFFF' },
-  { background: '#7E5109', color: '#FFFFFF' },
-  { background: '#873600', color: '#FFFFFF' },
-  { background: '#17202A', color: '#FFFFFF' },
-  { background: '#5D6D7E', color: '#FFFFFF' },
-  { background: '#6C3483', color: '#FFFFFF' },
-  { background: '#21618C', color: '#FFFFFF' },
-  { background: '#117864', color: '#FFFFFF' },
-  { background: '#9A7D0A', color: '#FFFFFF' },
-  { background: '#935116', color: '#FFFFFF' },
-  { background: '#76448A', color: '#FFFFFF' },
-  { background: '#1F618D', color: '#FFFFFF' },
-  { background: '#148F77', color: '#FFFFFF' },
-  { background: '#B7950B', color: '#000000' },
-  { background: '#AF601A', color: '#FFFFFF' },
-  { background: '#2E86C1', color: '#FFFFFF' },
-  { background: '#B9770E', color: '#000000' },
-  { background: '#884EA0', color: '#FFFFFF' },
-  { background: '#2471A3', color: '#FFFFFF' },
-  { background: '#17A589', color: '#000000' },
-  { background: '#D4AC0D', color: '#000000' },
-  { background: '#CA6F1E', color: '#FFFFFF' },
-  { background: '#2E4053', color: '#FFFFFF' },
-];
-
-// Declare if colorcode_statuses does not exist
-if(colorcode_statuses){
-  var colorcode_statuses = {};
-}
 
 $(document).ready(function(){
-  $('.help').parents("li").remove();
+  try {
 
-  $('#top-menu').after('<div id="topmenu-nav"></div>');
-  $('#topmenu-nav').append($('#top-menu').html());
-  $('#top-menu').empty();
-  $('#topmenu-nav').appendTo('#top-menu');
+    $('.help').parents("li").remove();
 
-  // $('<div id="empty-nav"><div style="display: block; width: 100%; position: absolute;"></div>').appendTo('#top-menu');
-  $('#quick-search').appendTo('#top-menu');
-  const ele = $('#quick-search label a');
-  $('#quick-search label').empty();
-  $(ele).appendTo('#quick-search label');
-  const srch = '<div class = expandSearch ></div>';
-  $('#quick-search #q').before(srch).prependTo('.expandSearch');
-  // $(searchIcon).prependTo('.expandSearch');
+    $('#top-menu').after('<div id="topmenu-nav"></div>');
+    $('#topmenu-nav').append($('#top-menu').html());
+    $('#top-menu').empty();
+    $('#topmenu-nav').appendTo('#top-menu');
 
-  $("#project-jump .drdn-trigger").attr("title", "Jump to project");
-  $("#userprofile").attr("title", "User profile");
+    // $('<div id="empty-nav"><div style="display: block; width: 100%; position: absolute;"></div>').appendTo('#top-menu');
+    $('#quick-search').appendTo('#top-menu');
+    const ele = $('#quick-search label a');
+    $('#quick-search label').empty();
+    $(ele).appendTo('#quick-search label');
+    const srch = '<div class = expandSearch ></div>';
+    $('#quick-search #q').before(srch).prependTo('.expandSearch');
+    // $(searchIcon).prependTo('.expandSearch');
 
-  $("#loggedas").prependTo("#account");
-  $("#account").appendTo("#top-menu");
-  $('#project-jump .drdn-trigger').html(projIcon);
+    $("#project-jump .drdn-trigger").attr("title", "Jump to project");
+    $("#userprofile").attr("title", "User profile");
 
-  // For user profile
-  if($("#loggedas").length > 0) {
-    var loggedasEle = $.parseHTML($("#loggedas").html());
-    $("#loggedas").remove();
-    $("#account ul").prepend('<li></li>');
-    $("#account ul li").first().html(loggedasEle[1]);
-  }
-  var account = ' <div id="userprofile"><div class="profileicon account"></div>';
-  account += '<div id="profilemenu" style="display: none;"></div></div>';
-  $("#quick-search").append(account);
-  $("#account ul").attr("id", "profilelist").appendTo("#profilemenu");
-  $("#account").remove();
-  $('#userprofile').appendTo('#top-menu');
+    $("#loggedas").prependTo("#account");
+    $("#account").appendTo("#top-menu");
+    $('#project-jump .drdn-trigger').html(projIcon);
 
-  // For user profile
-  $(".account").click(function() {
-    var X = $(this).attr('id');
-    if(X == 1) {
+    // For user profile
+    if($("#loggedas").length > 0) {
+      var loggedasEle = $.parseHTML($("#loggedas").html());
+      $("#loggedas").remove();
+      $("#account ul").prepend('<li></li>');
+      $("#account ul li").first().html(loggedasEle[1]);
+    }
+    var account = ' <div id="userprofile"><div class="profileicon account"></div>';
+    account += '<div id="profilemenu" style="display: none;"></div></div>';
+    $("#quick-search").append(account);
+    $("#account ul").attr("id", "profilelist").appendTo("#profilemenu");
+    $("#account").remove();
+    $('#userprofile').appendTo('#top-menu');
+
+    // For user profile
+    $(".account").click(function() {
+      var X = $(this).attr('id');
+      if(X == 1) {
+        $("#profilemenu").hide();
+        $(this).attr('id', '0');
+      }
+      else {
+        $("#profilemenu").show();
+        $(this).attr('id', '1');
+      }
+    });
+
+    $("#profilemenu").mouseup(function() {
+      return false
+    });
+    $(".account").mouseup(function() {
+      return false
+    });
+    $(document).mouseup(function() {
       $("#profilemenu").hide();
-      $(this).attr('id', '0');
-    }
-    else {
-      $("#profilemenu").show();
-      $(this).attr('id', '1');
-    }
-  });
-
-  $("#profilemenu").mouseup(function() {
-    return false
-  });
-  $(".account").mouseup(function() {
-    return false
-  });
-  $(document).mouseup(function() {
-    $("#profilemenu").hide();
-    $(".account").attr('id', '');
-  });
-
-  // Add selected class to current page
-  const projMenus = ['/activity', '/issues', '/time_entries', '/calendar', '/news', '/gantt'];
-  const crLink = new URL(window.location.href);
-  if(crLink.pathname.length > 5 && crLink.pathname.startsWith('/wk')){
-    $('#topmenu-nav .wkdashboard').addClass('selected');
-  }
-  else if(crLink.pathname.startsWith('/projects') || projMenus.includes(crLink.pathname)){
-    $('#topmenu-nav .projects').addClass('selected');
-  }
-  $('#topmenu-nav li a, #main-menu li a').each(function(){
-    const link = new URL($(this).prop('href') || '');
-    if (crLink.pathname == link.pathname && crLink.search == link.search) {
-      $(this).addClass('selected');
-    }
-  });
-
-  $('#new-object, .menu-children a').removeClass('selected');
-
-  $('.selected').each(function(){
-    $(this).parents('li').addClass('highlighted');
-  });
-
-  $('#main').before($('#main-menu'));
-
-  // Add Toggle Icon for sideNav
-  $('<div id="left-nav"></div>').appendTo('#wrapper');
-  $('#main-menu').appendTo('#left-nav');
-  $('html').append(leftIcon);
-  $('html').append(RightIcon);
-
-  // Click left action
-  if(sessionStorage.getItem("showSideNav") == 'true'){
-    setNavLeft();
-  }
-  $('#toggle-left').click(function() {
-    setNavLeft();
-  });
-  // Click right action
-  $('#toggle-right').click(function() {
-    setNavRight();
-  });
-
-  // Add hover class to sideNav
-  $('#left-nav').hover(function() {
-    $('#left-nav.sidenav-left').each(function() {
-      $('#left-nav').addClass('hover');
-      $('.toggle-icon').addClass('hover');
-      $('#main-menu').show();
+      $(".account").attr('id', '');
     });
-  },function() {
-    $('#left-nav.sidenav-left').each(function() {
-      $('#left-nav').removeClass('hover');
-      $('.toggle-icon').removeClass('hover');
-      $('#main-menu').hide();
-    });
-  });
 
-  // Hide SideNav if SideNav empty
-  if($('#main-menu').children().length > 1 || $('#sidebar').children().length > 0) {
-    $('#main').addClass('sidebar');
-  }
-  else{
-    $('#left-nav').hide();
-    $('.toggle-icon').hide();
-  }
-  if($('#main-menu').children().length > 1 && $('#sidebar').children().length > 0){
-    $('#sidebar').addClass('border-top');
-  }
-
-  // Move Right sidebar to left sidebar within main-menu
-  $('#sidebar').appendTo('#main-menu');
-  $('.tabs-buttons').remove();
-  const link = $('a.icon-only.icon-clear-query').prop('href');
-
-  /* TODO: Need to add close icon for some sidebar menus */
-  // $('a.icon-only.icon-clear-query').before('<a class="close-icon" href="'+link+'"></a>');
-  // $('.query.selected').parents('li').addClass('row');
-  $('a.icon-only.icon-clear-query').remove();
-
-  // Adding ERPmine menu Icons
-  erpmineMenus.map(({ key, svg })=>{
-    $('#main-menu .'+key).before(svg);
-  });
-
-  // Adding Project menu Icons
-  projMenusIcons.map(({ key, svg })=>{
-    $('#main-menu .'+key).not('#admin-menu .'+key).before(svg);
-  });
-
-  //Adding Admin menu Icons
-  adminMenus.map(({ key, svg })=>{
-    $('#admin-menu .'+key).before(svg);
-  });
-
-  //Adding Default menu Icon
-  $('#main-menu ul a').each(function(){
-    const svg = $(this).parents('li').find('svg');
-    const parent = $(this).parents('#sidebar');
-    if(svg.length == 0 && parent.length == 0 && $(this).prop('id') != 'new-object' && $(this).parents('ul').prop('class') != 'menu-children'){
-      $(this).before(defaultMenuSVG);
+    // Add selected class to current page
+    const projMenus = ['/activity', '/issues', '/time_entries', '/calendar', '/news', '/gantt'];
+    const crLink = new URL(window.location.href);
+    if(crLink.pathname.length > 5 && crLink.pathname.startsWith('/wk')){
+      $('#topmenu-nav .wkdashboard').addClass('selected');
     }
-  });
+    else if(crLink.pathname.startsWith('/projects') || projMenus.includes(crLink.pathname)){
+      $('#topmenu-nav .projects').addClass('selected');
+    }
+    $('#topmenu-nav li a, #main-menu li a').each(function(){
+      const link = new URL($(this).prop('href') || '');
+      if (crLink.pathname == link.pathname && crLink.search == link.search) {
+        $(this).addClass('selected');
+      }
+    });
 
-  $('#main-menu a.selected').each(function(){
-    $(this).parents('li').each(function(){
-      $(this).find('svg').css({
-        'fill': '#0c66e4'
+    $('#new-object, .menu-children a').removeClass('selected');
+
+    $('.selected').each(function(){
+      $(this).parents('li').addClass('highlighted');
+    });
+
+    $('#main').before($('#main-menu'));
+
+    // Add Toggle Icon for sideNav
+    $('<div id="left-nav"></div>').appendTo('#wrapper');
+    $('#main-menu').appendTo('#left-nav');
+    $('html').append(leftIcon);
+    $('html').append(RightIcon);
+
+    // Click left action
+    if(sessionStorage.getItem("showSideNav") == 'true'){
+      setNavLeft();
+    }
+    $('#toggle-left').click(function() {
+      setNavLeft();
+    });
+    // Click right action
+    $('#toggle-right').click(function() {
+      setNavRight();
+    });
+
+    // Add hover class to sideNav
+    $('#left-nav').hover(function() {
+      $('#left-nav.sidenav-left').each(function() {
+        $('#left-nav').addClass('hover');
+        $('.toggle-icon').addClass('hover');
+        $('#main-menu').show();
+      });
+    },function() {
+      $('#left-nav.sidenav-left').each(function() {
+        $('#left-nav').removeClass('hover');
+        $('.toggle-icon').removeClass('hover');
+        $('#main-menu').hide();
       });
     });
-  });
 
-  // Add Redmine Logo
-  $(".home").parents('ul').prepend( '<li class="redmine-logo"><a id="redmine-home" href="/"><svg></svg></a></li>');
-  $('.fa.fa-bell').parents('span').append(notifIcon);
-  $('.fa.fa-bell').remove();
-
-  //Add Timer Icon
-  const clockin = $('#clockin').css('display');
-  const clockout = $('#clockout').css('display');
-  $('#startdiv').html('<span id="clockin" style="display: '+clockin+'">'+timerStartIcon+'</span>');
-  $('#enddiv').html('<span id="clockout" style="display: '+clockout+'">'+timerStopIcon+'</span>');
-  //Add Issue starter Icon
-  $('#issueImg img').hide();
-  setIssueStartIcon();
-  // Observe issue starter img prop changes
-  var imgObserver = new MutationObserver(function(mutationsList, observer) {
-    for(let mutation of mutationsList) {
-      if (mutation.type === 'attributes') {
-        setIssueStartIcon();
-      }
+    // Hide SideNav if SideNav empty
+    if($('#main-menu').children().length > 1 || $('#sidebar').children().length > 0) {
+      $('#main').addClass('sidebar');
     }
-  });
-  imgObserver.observe($('#issueImg img')[0], { attributes: true });
+    else{
+      $('#left-nav').hide();
+      $('.toggle-icon').hide();
+    }
+    if($('#main-menu').children().length > 1 && $('#sidebar').children().length > 0){
+      $('#sidebar').addClass('border-top');
+    }
 
-  var selectObserver = new MutationObserver(function(mutationsList) {
-    mutationsList.forEach(function(mutation) {
-      if (mutation.type === 'attributes') {
-        var $targetElement = $(mutation.target);
-        if (!$targetElement.prop('disabled')) {
-          $targetElement.parent().removeClass('disabled');
-        } else {
-          $targetElement.parent().addClass('disabled');
+    // Move Right sidebar to left sidebar within main-menu
+    $('#sidebar').appendTo('#main-menu');
+    $('.tabs-buttons').remove();
+    const link = $('a.icon-only.icon-clear-query').prop('href');
+
+    /* TODO: Need to add close icon for some sidebar menus */
+    // $('a.icon-only.icon-clear-query').before('<a class="close-icon" href="'+link+'"></a>');
+    // $('.query.selected').parents('li').addClass('row');
+    $('a.icon-only.icon-clear-query').remove();
+
+    // Adding ERPmine menu Icons
+    erpmineMenus.map(({ key, svg })=>{
+      $('#main-menu .'+key).before(svg);
+    });
+
+    // Adding Project menu Icons
+    projMenusIcons.map(({ key, svg })=>{
+      $('#main-menu .'+key).not('#admin-menu .'+key).before(svg);
+    });
+
+    //Adding Admin menu Icons
+    adminMenus.map(({ key, svg })=>{
+      $('#admin-menu .'+key).before(svg);
+    });
+
+    //Adding Default menu Icon
+    $('#main-menu ul a').each(function(){
+      const svg = $(this).parents('li').find('svg');
+      const parent = $(this).parents('#sidebar');
+      if(svg.length == 0 && parent.length == 0 && $(this).prop('id') != 'new-object' && $(this).parents('ul').prop('class') != 'menu-children'){
+        $(this).before(defaultMenuSVG);
+      }
+    });
+
+    $('#main-menu a.selected').each(function(){
+      $(this).parents('li').each(function(){
+        $(this).find('svg').css({
+          'fill': '#0c66e4'
+        });
+      });
+    });
+
+    // Add Redmine Logo
+    $(".home").parents('ul').prepend( '<li class="redmine-logo"><a id="redmine-home" href="/"><svg></svg></a></li>');
+    $('.fa.fa-bell').parents('span').append(notifIcon);
+    $('.fa.fa-bell').remove();
+
+    //Add Timer Icon
+    const clockin = $('#clockin').css('display');
+    const clockout = $('#clockout').css('display');
+    $('#startdiv').html('<span id="clockin" style="display: '+clockin+'">'+timerStartIcon+'</span>');
+    $('#enddiv').html('<span id="clockout" style="display: '+clockout+'">'+timerStopIcon+'</span>');
+    //Add Issue starter Icon
+    $('#issueImg img').hide();
+    setIssueStartIcon();
+    // Observe issue starter img prop changes
+    var imgObserver = new MutationObserver(function(mutationsList, observer) {
+      for(let mutation of mutationsList) {
+        if (mutation.type === 'attributes') {
+          setIssueStartIcon();
         }
       }
     });
-  });
+    imgObserver.observe($('#issueImg img')[0], { attributes: true });
 
-  $('select').each(function() {
-    selectObserver.observe(this, { attributes: true });
-  });
+    var selectObserver = new MutationObserver(function(mutationsList) {
+      mutationsList.forEach(function(mutation) {
+        if (mutation.type === 'attributes') {
+          var $targetElement = $(mutation.target);
+          if (!$targetElement.prop('disabled')) {
+            $targetElement.parent().removeClass('disabled');
+          } else {
+            $targetElement.parent().addClass('disabled');
+          }
+        }
+      });
+    });
 
-  $('table').each(function() {
-    var $parentDiv = $(this).parent('div');
-    if ($parentDiv.hasClass('autoscroll')) {
-      $parentDiv.removeClass('autoscroll');
-    } else if ($parentDiv.css('overflow')) {
-      $parentDiv.css('overflow', '');
-    }
-    $(this).css('overflow', 'auto');
-  });
+    $('select').each(function() {
+      selectObserver.observe(this, { attributes: true });
+    });
 
-  $('select').on('change', function() {
-    if ($(this).prop('multiple')) {
-      replaceCloseIcon();
-    }
-  });
+    $('table').each(function() {
+      var $parentDiv = $(this).parent('div');
+      if ($parentDiv.hasClass('autoscroll')) {
+        $parentDiv.removeClass('autoscroll');
+      } else if ($parentDiv.css('overflow')) {
+        $parentDiv.css('overflow', '');
+      }
+      $(this).css('overflow', 'auto');
+    });
+
+    $('select').on('change', function() {
+      if ($(this).prop('multiple')) {
+        replaceCloseIcon();
+      }
+    });
 
 
-  //Redmine Right click list options
-  setTimeout(observeListOpt, 200);
+    //Redmine Right click list options
+    setTimeout(observeListOpt, 200);
 
-	//accordion section
-	if($("#accordion").length > 0) $("#accordion").accordion();
+    //accordion section
+    if($("#accordion").length > 0) $("#accordion").accordion();
 
-  //add header after topmenu nav
-  $('#topmenu-nav').after($('#header'));
+    //add header after topmenu nav
+    $('#topmenu-nav').after($('#header'));
 
   // Select all buttons and input type="submit"
   $('input[type="submit"]').each(function() {
@@ -421,12 +407,18 @@ $(document).ready(function(){
     $(this).addClass(className);
   });
 
-  //For Redmine columns colorcode
-  $('td.status').each(function(){
-    const status = $(this).parent('tr').prop('class').split(' ').filter(val => val.includes('status-'))[0];
-    $(this).addClass('colorcode-bg-setup col-'+status);
-  });
-  setColorcode();
+    //For Redmine columns colorcode
+    $('td.status').each(function(){
+      const status = $(this).parent('tr').prop('class').split(' ').filter(val => val.includes('status-'))[0];
+      $(this).addClass('colorcode-bg-setup col-'+status);
+    });
+    setColorcode();
+
+
+  }
+  catch (error) {
+    console.error(error);
+  }
 });
 
 function observeListOpt(){
@@ -502,26 +494,23 @@ function replaceCloseIcon(){
 
 function setColorcode(){
   $("td.colorcode-bg-setup").each(function(){
-    let status, bgObj={};
+    let status, bgObj={}, statusInt;
     if(this.className.includes('col-status-')){
       const classArr = this.className.split(' ');
       const className = classArr.find(name => name.includes('col-status-'));
       status = className.replace('col-status-','');
       status = parseInt(status) ? parseInt(status) : status;
-
-      // console.log('className', status, colorcode_statuses.length, bgObj)
-      if(Number.isInteger(status)){
-        bgObj = randomColors[status-1] || randomColors[49];
-      }else if(!Number.isInteger(status)){
-        bgObj = Object.keys(colorcode_statuses).length > 0 ? (definedColors[colorcode_statuses[status]] || randomColors[49]) : randomColors[49];
-      } else{
-        bgObj = randomColors[49];
-      }
-      // console.log('className', status, colorcode_statuses.length, bgObj)
-      if($(this).html()){
-        $(this).html('<div class="colorcode-box-'+status+'">'+$(this).html()+'</div>');
-        $('.colorcode-box-'+status).css('background-color', bgObj.background);
-        $('.colorcode-box-'+status).css('color', bgObj.color);
+      if(status){
+        if(!Number.isInteger(status)){
+          status = Array.from(status).reduce((sum, char) => sum + char.charCodeAt(0), 0);
+        }
+        status = status >= 50 ? (status % 50) : status;
+        bgObj = colorCodeColors[status] || colorCodeColors[49];
+        if($(this).html()){
+          $(this).html('<div class="colorcode-box-'+status+'">'+$(this).html()+'</div>');
+          $('.colorcode-box-'+status).css('background-color', bgObj.background);
+          $('.colorcode-box-'+status).css('color', bgObj.color);
+        }
       }
     }
   });
