@@ -37,26 +37,17 @@
   background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2229%22%20height%3D%2229%22%20viewBox%3D%220%200%2024%2024%22%20style%3D%22fill%3A%20%2344546f%22%3E%3Cpath%20d%3D%22M12%202C6.579%202%202%206.579%202%2012s4.579%2010%2010%2010%2010-4.579%2010-10S17.421%202%2012%202zm0%205c1.727%200%203%201.272%203%203s-1.273%203-3%203c-1.726%200-3-1.272-3-3s1.274-3%203-3zm-5.106%209.772c.897-1.32%202.393-2.2%204.106-2.2h2c1.714%200%203.209.88%204.106%202.2C15.828%2018.14%2014.015%2019%2012%2019s-3.828-.86-5.106-2.228z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
 }
 
-div#userprofile {
-  /* width: 29px;
-  height: 29px; */
-  float: right;
-  padding-left: 5px;
-  margin-right: 0.6%;
-  padding-bottom: 3px;
-}
-
 div.profileicon {
-  /* width: 29px;
-  height: 29px; */
+  width: 29px;
+  height: 29px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 99em;
   vertical-align: middle;
-  /* background-image: url('../images/user.png'); */
   background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2229%22%20height%3D%2229%22%20viewBox%3D%220%200%2024%2024%22%20style%3D%22fill%3A%20%2344546f%22%3E%3Cpath%20d%3D%22M12%202C6.579%202%202%206.579%202%2012s4.579%2010%2010%2010%2010-4.579%2010-10S17.421%202%2012%202zm0%205c1.727%200%203%201.272%203%203s-1.273%203-3%203c-1.726%200-3-1.272-3-3s1.274-3%203-3zm-5.106%209.772c.897-1.32%202.393-2.2%204.106-2.2h2c1.714%200%203.209.88%204.106%202.2C15.828%2018.14%2014.015%2019%2012%2019s-3.828-.86-5.106-2.228z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
   cursor:pointer;
+  margin: 3px;
 }
 
 div#profilemenu {
@@ -64,7 +55,6 @@ div#profilemenu {
   z-index: 999;
   width: 135px;
   right: 10px;
-  /* height: 100px; */
   background-color: #FFFFFF;
   padding: 5px 0 5px 0;
   border-radius: 5px;
@@ -120,12 +110,6 @@ div#profilemenu {
 
 #topmenu-nav{
   display: flex;
-  height: 100%;
-  position: relative;
-  -moz-box-align: stretch;
-  align-items: stretch;
-  flex: 1 0 0px;
-  -moz-box-flex: 1;
   align-items: center;
 }
 
@@ -273,7 +257,6 @@ input.autocomplete {
 #project-jump.drdn, #project-jump .drdn-trigger{
   width: max-content;
   height: max-content;
-  padding: 3px;
   line-height: unset;
 }
 
@@ -283,19 +266,13 @@ input.autocomplete {
   justify-content: center;
 }
 
-#clockINOUT, #issueLog, #notification, #project-jump{
+div#clockINOUT, div#issueLog, div#notification, div#project-jump{
   padding: 3px;
-  margin-left: 5px !important;
-}
-
-.profileicon.account{
-  padding: 3px;
-  width: 29px;
-  height: 29px;
+  margin: 0px !important;
 }
 
 #clockINOUT:hover, #issueLog:hover, #notification:hover, #project-jump:hover,
-.profileicon.account:hover {
+#userprofile:hover {
   background-color: #E9EAEC;
   border-radius: 25px;
 }
@@ -309,19 +286,18 @@ input.autocomplete {
   position: unset;
   padding-top: 0px;
   padding-bottom: 0px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #header h1{
   margin: 0px;
+  line-height: normal;
 }
-/* #header{
-  display: none;
-} */
 
 #main-menu{
-  /* position: fixed;
-  height: 100%;
-  width: 240px; */
   bottom: unset;
   left: unset;
   margin: 0px;
@@ -591,6 +567,10 @@ h4 {
   font-size: 13px;
   border-bottom: 1px solid #ccc;
   font-weight:normal;
+}
+
+html{
+  overflow-y: auto;
 }
 
 html, body{
@@ -864,4 +844,13 @@ input.approve:hover, input.submit:hover {
 
 input.reject:hover {
   background-color: #ff0008;
+}
+
+div.width33{
+  width: 33%;
+  min-width: 360px;
+}
+
+#quick-search #q {
+width: 156px;
 }

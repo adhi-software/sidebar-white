@@ -103,7 +103,7 @@ const issueStopIcon= '<svg fill="#cc0101" height="25px" width="25px" version="1.
 
 const notifIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="25px" width="25px" viewBox="0 0 448 512" style="fill: #44546f"><path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/></svg>';
 
-  const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 384 512" style="fill: #5d5d5d"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
+const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 384 512" style="fill: #5d5d5d"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
 
 const colorCodeColors = [
   { "background": "#3498DB", "color": "#FFFFFF" },
@@ -159,32 +159,26 @@ const colorCodeColors = [
 ];
 
 $(document).ready(function(){
-  try {
-
-    $('.help').parents("li").remove();
-
+  const scrSize = window.matchMedia('(min-width: 900px)');
+  if (scrSize.matches) {
+    // Top menu setup
     $('#top-menu').after('<div id="topmenu-nav"></div>');
     $('#topmenu-nav').append($('#top-menu').html());
     $('#top-menu').empty();
     $('#topmenu-nav').appendTo('#top-menu');
-
-    // $('<div id="empty-nav"><div style="display: block; width: 100%; position: absolute;"></div>').appendTo('#top-menu');
     $('#quick-search').appendTo('#top-menu');
     const ele = $('#quick-search label a');
     $('#quick-search label').empty();
     $(ele).appendTo('#quick-search label');
     const srch = '<div class = expandSearch ></div>';
     $('#quick-search #q').before(srch).prependTo('.expandSearch');
-    // $(searchIcon).prependTo('.expandSearch');
-
     $("#project-jump .drdn-trigger").attr("title", "Jump to project");
     $("#userprofile").attr("title", "User profile");
-
     $("#loggedas").prependTo("#account");
     $("#account").appendTo("#top-menu");
     $('#project-jump .drdn-trigger').html(projIcon);
 
-    // For user profile
+    // For user profile Setup
     if($("#loggedas").length > 0) {
       var loggedasEle = $.parseHTML($("#loggedas").html());
       $("#loggedas").remove();
@@ -196,9 +190,9 @@ $(document).ready(function(){
     $("#quick-search").append(account);
     $("#account ul").attr("id", "profilelist").appendTo("#profilemenu");
     $("#account").remove();
-    $('#userprofile').appendTo('#top-menu');
+    $('#userprofile').appendTo('#quick-search');
 
-    // For user profile
+    // For user profile popup setup
     $(".account").click(function() {
       var X = $(this).attr('id');
       if(X == 1) {
@@ -210,11 +204,7 @@ $(document).ready(function(){
         $(this).attr('id', '1');
       }
     });
-
-    $("#profilemenu").mouseup(function() {
-      return false
-    });
-    $(".account").mouseup(function() {
+    $("#profilemenu, .account").mouseup(function() {
       return false
     });
     $(document).mouseup(function() {
@@ -222,7 +212,7 @@ $(document).ready(function(){
       $(".account").attr('id', '');
     });
 
-    // Add selected class to current page
+    // The selected class should be added to the menu so that it matches the current page
     const projMenus = ['/activity', '/issues', '/time_entries', '/calendar', '/news', '/gantt'];
     const crLink = new URL(window.location.href);
     if(crLink.pathname.length > 5 && crLink.pathname.startsWith('/wk')){
@@ -237,29 +227,28 @@ $(document).ready(function(){
         $(this).addClass('selected');
       }
     });
-
+    // Style selected menu
     $('#new-object, .menu-children a').removeClass('selected');
-
     $('.selected').each(function(){
       $(this).parents('li').addClass('highlighted');
     });
 
-    $('#main').before($('#main-menu'));
-
     // Add Toggle Icon for sideNav
+    $('#main').before($('#main-menu'));
     $('<div id="left-nav"></div>').appendTo('#wrapper');
     $('#main-menu').appendTo('#left-nav');
     $('html').append(leftIcon);
     $('html').append(RightIcon);
 
-    // Click left action
+    // Toggle Icon left click action
     if(sessionStorage.getItem("showSideNav") == 'true'){
       setNavLeft();
     }
     $('#toggle-left').click(function() {
       setNavLeft();
     });
-    // Click right action
+
+    // Toggle Icon right click action
     $('#toggle-right').click(function() {
       setNavRight();
     });
@@ -287,6 +276,8 @@ $(document).ready(function(){
       $('#left-nav').hide();
       $('.toggle-icon').hide();
     }
+
+    //Add divider line between menus
     if($('#main-menu').children().length > 1 && $('#sidebar').children().length > 0){
       $('#sidebar').addClass('border-top');
     }
@@ -339,13 +330,13 @@ $(document).ready(function(){
     $('.fa.fa-bell').remove();
 
     //Add Timer Icon
-    const clockin = $('#clockin').css('display');
-    const clockout = $('#clockout').css('display');
-    $('#startdiv').html('<span id="clockin" style="display: '+clockin+'">'+timerStartIcon+'</span>');
-    $('#enddiv').html('<span id="clockout" style="display: '+clockout+'">'+timerStopIcon+'</span>');
+    $('#startdiv').html('<span id="clockin" style="display: '+ $('#clockin').css('display') +'">'+timerStartIcon+'</span>');
+    $('#enddiv').html('<span id="clockout" style="display: '+ $('#clockout').css('display') +'">'+timerStopIcon+'</span>');
+
     //Add Issue starter Icon
     $('#issueImg img').hide();
     setIssueStartIcon();
+
     // Observe issue starter img prop changes
     var imgObserver = new MutationObserver(function(mutationsList, observer) {
       for(let mutation of mutationsList) {
@@ -356,75 +347,49 @@ $(document).ready(function(){
     });
     imgObserver.observe($('#issueImg img')[0], { attributes: true });
 
-    var selectObserver = new MutationObserver(function(mutationsList) {
-      mutationsList.forEach(function(mutation) {
-        if (mutation.type === 'attributes') {
-          var $targetElement = $(mutation.target);
-          if (!$targetElement.prop('disabled')) {
-            $targetElement.parent().removeClass('disabled');
-          } else {
-            $targetElement.parent().addClass('disabled');
-          }
-        }
-      });
-    });
+    //Add header after topmenu nav
+    $('#topmenu-nav').after($('#header'));
+  }
 
-    $('select').each(function() {
-      selectObserver.observe(this, { attributes: true });
-    });
-
-    $('table').each(function() {
-      var $parentDiv = $(this).parent('div');
-      if ($parentDiv.hasClass('autoscroll')) {
-        $parentDiv.removeClass('autoscroll');
-      } else if ($parentDiv.css('overflow')) {
-        $parentDiv.css('overflow', '');
-      }
-      $(this).css('overflow', 'auto');
-    });
-
-    $('select').on('change', function() {
-      if ($(this).prop('multiple')) {
-        replaceCloseIcon();
-      }
-    });
-
+    $('.help').parents("li").remove();
 
     //Redmine Right click list options
-    setTimeout(observeListOpt, 200);
+    setTimeout(listClickPosition, 200);
 
-    //accordion section
-    if($("#accordion").length > 0) $("#accordion").accordion();
+    // //accordion section
+    // if($("#accordion").length > 0) $("#accordion").accordion();
 
-    //add header after topmenu nav
-    $('#topmenu-nav').after($('#header'));
-
-  // Select all buttons and input type="submit"
-  $('input[type="submit"]').each(function() {
-    // Replace spaces with underscores and convert to lowercase
-    const className = $(this).val().replace(/\s+/g, '_').toLowerCase();
-    // Add a class with the name of the button's value
-    $(this).addClass(className);
-  });
+    // Select all buttons and input type="submit"
+    $('input[type="submit"]').each(function() {
+      $(this).addClass($(this).val().replace(/\s+/g, '_').toLowerCase());
+    });
 
     //For Redmine columns colorcode
     $('td.status').each(function(){
       const status = $(this).parent('tr').prop('class').split(' ').filter(val => val.includes('status-'))[0];
       $(this).addClass('colorcode-bg-setup col-'+status);
     });
+    // List page colorcode
     setColorcode();
 
+    //Dashboard graph width
+    if(window.location.pathname == '/wkdashboard') {
+      setInterval(()=>{
+        $('#graph').children('div').each(function(){
+          $(this).addClass("width33");
+        });
+      }, 150);
+    }
 
-  }
-  catch (error) {
-    console.error(error);
-  }
+    //Hide Top menu search button
+    $('.expandSearch').siblings('label').hide();
+
 });
 
-function observeListOpt(){
+function listClickPosition(){
   var entered = false, oldLeft = 0;
   if($('#context-menu').length > 0){
-    const listoptionsOb = new MutationObserver(function(mutationsList, observer) {
+    const listClickObserve = new MutationObserver(function(mutationsList, observer) {
       mutationsList.forEach(function(mutation) {
         let entry = false, left = 0;
         if (mutation.type == 'attributes' && $('#context-menu').is(':visible')) {
@@ -437,12 +402,12 @@ function observeListOpt(){
         if (entry && (!entered ||oldLeft != left)) {
           entered = true;
           oldLeft = left-245;
-          console.log('intersecting ininin', $('#context-menu').is(':visible'));
+          // console.log('intersecting ininin', $('#context-menu').is(':visible'));
           correctOptionsPosition();
         }
       });
     });
-    listoptionsOb.observe($('#context-menu')[0], { attributes: true });
+    listClickObserve.observe($('#context-menu')[0], { attributes: true });
   }
 }
 
@@ -460,7 +425,6 @@ function setIssueStartIcon(){
   $('#issueImg').prepend(issueSrc.includes('finish') ? issueStopIcon : issueStartIcon);
 }
 
-
 function setNavLeft(){
   $('#left-nav').addClass('sidenav-left');
   $('.toggle-icon').addClass('left');
@@ -469,7 +433,7 @@ function setNavLeft(){
   $('#main-menu').hide();
   $('#toggle-right').show();
   $('#toggle-left').hide();
-  saveSideNav(true);
+  savePosition(true);
 }
 
 function setNavRight(){
@@ -480,21 +444,16 @@ function setNavRight(){
   $('#main-menu').show();
   $('#toggle-left').show();
   $('#toggle-right').hide();
-  saveSideNav(false);
+  savePosition(false);
 }
 
-function saveSideNav(show=false){
+function savePosition(show=false){
   sessionStorage.setItem("showSideNav", show);
-}
-
-function replaceCloseIcon(){
-  $('i.delete.icon').before('<span class="delete icon">'+closeIcon+'</span>');
-  $('i.delete.icon').remove();
 }
 
 function setColorcode(){
   $("td.colorcode-bg-setup").each(function(){
-    let status, bgObj={}, statusInt;
+    let status, bgObj={};
     if(this.className.includes('col-status-')){
       const classArr = this.className.split(' ');
       const className = classArr.find(name => name.includes('col-status-'));
