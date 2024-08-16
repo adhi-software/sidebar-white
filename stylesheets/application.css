@@ -688,27 +688,6 @@ form#query_form fieldset > div > b > label {
 	padding: 5px;
 }
 
-form#issue-form  div.splitcontent {
-	overflow: visible;
-}
-
-form#edit_issue  div.splitcontent {
-	overflow: visible;
-}
-
-form#query_form fieldset {
-	min-width: fit-content;
-}
-
-form#query_form div .splitcontent{
-	overflow: visible;
-}
-
-table#shipmentTable.list ,
-table#deliveryTable.list ,
-table#issueTable.list ,table#txnTable.list {
-	overflow: visible;
-}
 
 /*submit button change */
 input[type="submit"], button {
@@ -749,11 +728,7 @@ button[type="submit"]:hover {
 
 div.issue {background: #fff;}
 
-form#wktime_edit, form#wkshipment_edit, form#wkdelivery_edit {
-  display: block;
-  padding-right: 15px;
-  width: max-content;
-}
+
 
 a.icon {
   color: var(--ds-text-inverse, #016bff);
