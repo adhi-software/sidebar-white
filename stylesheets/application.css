@@ -805,12 +805,12 @@ input[type='radio'], input[type='checkbox'] {
 }
 
 select {
-  height: 32px !important;
+  height: 32px;
 }
 
-select#time_entry__activity_id{
+/* select#time_entry__activity_id{
   width: auto !important;
-}
+} */
 
 input:focus, select:focus, textarea:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="password"]:focus {
   border: 2px solid #1D7AFC;
@@ -818,20 +818,21 @@ input:focus, select:focus, textarea:focus, input[type="text"]:focus, input[type=
 }
 
 input, select, textarea, button {
-  border-radius: 5px !important;
+  border-radius: 5px;
 }
 
 select[multiple=multiple] {
-  height: auto !important;
+  height: auto;
 }
 
-.select2-container--default .select2-selection--single{
-  border-radius: 5px !important;
-  height: 32px !important;
+span.select2-container--default span.select2-selection--single{
+  border-radius: 5px;
+  height: 32px;
 }
 
 input.approve, input.submit {
-  background-color: #2ECC71;
+  background-color: #90C93E;
+  ;
 }
 
 input.reject {
@@ -839,7 +840,7 @@ input.reject {
 }
 
 input.approve:hover, input.submit:hover {
-  background-color: #08db60;
+  background-color: #67ae04;
 }
 
 input.reject:hover {
