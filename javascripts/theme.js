@@ -365,7 +365,7 @@ $(document).ready(function(){
         }
       }
     });
-    imgObserver.observe($('#issueImg img')[0], { attributes: true });
+    if($('#issueImg img') && $('#issueImg img')[0]) imgObserver.observe($('#issueImg img')[0], { attributes: true });
 
     //Add header after topmenu nav
     $('#topmenu-nav').after($('#header'));
@@ -418,7 +418,7 @@ $(document).ready(function(){
       }
     }
   });
-  imgObserver.observe(($('#accordion') || [])[0], { childList: true, subtree: true });
+  if($('#accordion') && $('#accordion')[0]) imgObserver.observe($('#accordion')[0], { childList: true, subtree: true });
 });
 
 function listClickPosition(){
@@ -443,7 +443,7 @@ function listClickPosition(){
         }
       });
     });
-    listClickObserve.observe($('#context-menu')[0], { attributes: true });
+    if($('#context-menu') && $('#context-menu')[0]) listClickObserve.observe($('#context-menu')[0], { attributes: true });
   }
 }
 
