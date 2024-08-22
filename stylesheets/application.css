@@ -239,10 +239,9 @@ input.autocomplete {
 
 #notification div.count{
   background-color: #c9372c;
-  font-size: smaller;
   position: absolute;
   padding: 2px;
-  left: 17px;
+  left: 15px;
   border-radius: 10px;
   width: 15px;
   height: 15px;
@@ -252,6 +251,10 @@ input.autocomplete {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+}
+
+#notification .notify-img {
+  margin-right: 5px
 }
 
 #project-jump.drdn, #project-jump .drdn-trigger{
@@ -813,21 +816,21 @@ span.select2-container--default span.select2-selection--single{
   height: 32px;
 }
 
-input.approve, input.submit {
-  background-color: #90C93E;
+input.approve, input.submit, input.hire, input.convert_lead {
+  background-color: #449d44;
   ;
 }
 
-input.reject {
-  background-color: #c6131b;
+input.reject, input.cancel_leave {
+  background-color: #c9372c;
 }
 
-input.approve:hover, input.submit:hover {
-  background-color: #67ae04;
+input.approve:hover, input.submit:hover, input.hire:hover, input.convert_lead:hover {
+  background-color: #388438;
 }
 
-input.reject:hover {
-  background-color: #ff0008;
+input.reject:hover, input.cancel_leave:hover {
+  background-color: #bc2116;
 }
 
 div.width33{
