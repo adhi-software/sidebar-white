@@ -816,21 +816,21 @@ span.select2-container--default span.select2-selection--single{
   height: 32px;
 }
 
-input.approve, input.submit, input.hire, input.convert_lead {
-  background-color: #449d44;
+.approve, .submit, .hire, .convert_lead {
+  background-color: #449d44 !important;
   ;
 }
 
-input.reject, input.cancel_leave {
-  background-color: #c9372c;
+.reject, .cancel_leave {
+  background-color: #c9372c !important;
 }
 
-input.approve:hover, input.submit:hover, input.hire:hover, input.convert_lead:hover {
-  background-color: #388438;
+.approve:hover, .submit:hover, .hire:hover, .convert_lead:hover {
+  background-color: #388438 !important;
 }
 
-input.reject:hover, input.cancel_leave:hover {
-  background-color: #bc2116;
+.reject:hover, .cancel_leave:hover {
+  background-color: #bc2116 !important;
 }
 
 div.width33{

@@ -360,9 +360,10 @@ $(document).ready(function(){
     // if($("#accordion").length > 0) $("#accordion").accordion();
 
     // Select all buttons and input type="submit"
-    $('input[type="submit"]').each(function() {
-      $(this).addClass($(this).val().replace(/\s+/g, '_').toLowerCase());
+    $('input[type="submit"], button[type="button"]').each(function() {
+      $(this).addClass($(this).val().replace(/\s+/g, '_').toLowerCase() || $(this).text().replace(/\s+/g, '_').toLowerCase());
     });
+    
 
     //For Redmine columns colorcode
     $('td.status').each(function(){
