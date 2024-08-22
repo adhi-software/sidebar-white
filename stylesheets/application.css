@@ -841,3 +841,9 @@ div.width33{
 #quick-search #q {
 width: 156px;
 }
+
+#projects-index ul.projects div.root a.project,#projects-index a.icon-user {
+  font-family: Roboto, 'Fira Sans', Oxygen, 'Open Sans', Ubuntu, sans-serif;
+  font-weight: 600;
+  color: #0052CC
+}
