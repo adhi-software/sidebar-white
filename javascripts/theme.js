@@ -418,7 +418,7 @@ $(document).ready(function(){
       }
     }
   });
-  imgObserver.observe($('#accordion')[0], { childList: true, subtree: true });
+  imgObserver.observe(($('#accordion') || [])[0], { childList: true, subtree: true });
 });
 
 function listClickPosition(){
