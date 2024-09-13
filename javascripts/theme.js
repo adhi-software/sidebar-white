@@ -574,7 +574,9 @@ function updateOtherIcons(){
         parent = $(this).parent('a');
       }
       $(parent).css({
-        'background-image': "url('data:image/svg+xml, "+encodeURIComponent(otherIcons[key])+"')"
+        'background-image': "url('data:image/svg+xml, "+encodeURIComponent(otherIcons[key])+"')",
+        'width': '16px',
+        'height': '16px'
       }).addClass('icon');
       $(parent).prop('title', $(this).prop('title'));
       $(this).hide();
