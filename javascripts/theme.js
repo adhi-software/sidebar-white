@@ -436,7 +436,28 @@ $(document).ready(function(){
     }
   });
   if($('#accordion') && $('#accordion')[0]) imgObserver.observe($('#accordion')[0], { childList: true, subtree: true });
+
+    // Observe Time sheet comment img changes
+    var tsObserver = new MutationObserver(function(mutationsList, observer) {
+      for(let mutation of mutationsList) {
+        if (mutation.type === 'attributes') {
+          updateOtherIcons();
+        }
+      }
+    });
+    observerTSComment(tsObserver);
+    $('.icon.icon-time-add').click(function(){
+      observerTSComment(tsObserver);
+    })
+
+
 });
+
+function observerTSComment(tsObserver){
+  $("[id^='custfield_img']").each(function(){
+    tsObserver.observe(this, { attributes: true });
+  });
+}
 
 function listClickPosition(){
   var entered = false, oldLeft = 0;
@@ -477,7 +498,7 @@ function correctOptionsPosition(){
 function setIssueStartIcon(){
   const issueSrc = $('#issueImg img').prop('src');
   $('#issueImg svg').remove();
-  $('#issueImg').prepend(issueSrc.includes('finish') ? topMenus.issueStopIcon : topMenus.issueStartIcon);
+  issueSrc && $('#issueImg').prepend(issueSrc.includes('finish') ? topMenus.issueStopIcon : topMenus.issueStartIcon);
 }
 
 function setNavLeft(){
@@ -534,7 +555,7 @@ function updateOtherIcons(){
   $('img').each(function(){
     const path = ((new URL($(this).prop('src'))).pathname).replace(/\/plugin_assets\/redmine_wktime\/images\/|\/images\//g, "");
     if(['delete.png', 'edit.png', 'withoutcommant.png', 'stats.png', 'withcommant.png'].includes(path)){
-      let key;
+      let key, parent;
       if(path == 'delete.png')
         key = 'icon-del';
       if(path == 'edit.png')
@@ -545,10 +566,20 @@ function updateOtherIcons(){
         key = 'icon-bg-list';
       if(path == 'stats.png')
         key = 'icon-stats';
-      $(this).parent('a').css({
-        'background-image': "url('data:image/svg+xml, "+encodeURIComponent(otherIcons[key])+"')"
+      if(['withoutcommant.png', 'withcommant.png'].includes(path) && $(this).parent('a').length == 0){
+        $(this).wrap('<span style="margin-left: 5px;"></span>');
+        parent = $(this).parent('span');
+      }
+      else{
+        parent = $(this).parent('a');
+      }
+      $(parent).css({
+        'background-image': "url('data:image/svg+xml, "+encodeURIComponent(otherIcons[key])+"')",
+        'width': '16px',
+        'height': '16px'
       }).addClass('icon');
-      $(this).replaceWith('');
+      $(parent).prop('title', $(this).prop('title'));
+      $(this).hide();
     }
   });
 }
