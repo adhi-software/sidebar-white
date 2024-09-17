@@ -273,6 +273,9 @@ $(document).ready(function(){
     // Add Toggle Icon for sideNav
     $('#main').before($('#main-menu'));
     $('<div id="left-nav"></div>').appendTo('#wrapper');
+    if($('#main-menu').length == 0){
+      $('<div id="main-menu" class="tabs"></div>').appendTo('#left-nav');
+    } 
     $('#main-menu').appendTo('#left-nav');
     $('html').append(leftIcon);
     $('html').append(RightIcon);
