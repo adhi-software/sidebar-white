@@ -391,7 +391,7 @@ $(document).ready(function(){
   });
 
   // Prevent chevrons icon to add, edit and spent time icon
-  const targets = $('a.icon-add svg use, a.icon-time-add svg use, a.icon-edit svg use');
+  const targets = $('a.icon-add svg use, a.icon-time-add svg use, a.icon-edit svg use, a.icon-copy svg use, a.icon-user svg use');
   const observer = new MutationObserver((mutationsList, observer) => {
     mutationsList.forEach(mutation => {
       if (mutation.type === 'attributes' && mutation.attributeName === 'href') {
