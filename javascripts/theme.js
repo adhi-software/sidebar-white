@@ -389,6 +389,27 @@ $(document).ready(function(){
           $anchor.before($svg);
       }
     });
+
+    // Prevent chevrons icon to add, edit and spent time icon
+    const targets = $('a.icon-add svg use, a.icon-time-add svg use, a.icon-edit svg use');
+    const observer = new MutationObserver((mutationsList, observer) => {
+      mutationsList.forEach(mutation => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'href') {
+          const currentHref = mutation.target.getAttribute('href');
+          const originalHref = mutation.oldValue;
+          // Only revert if the new value differs from the old value
+          if (currentHref !== originalHref) {
+            observer.disconnect();
+            mutation.target.setAttribute('href', originalHref);
+            observer.observe(mutation.target, { attributes: true, attributeOldValue: true });
+          }
+        }
+      });
+    });
+  
+    targets.each(function () {
+      observer.observe(this, { attributes: true, attributeOldValue: true });
+    });
 });
 
 function observerTSComment(tsObserver){
