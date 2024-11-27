@@ -853,10 +853,14 @@ div.width33{
   width: 156px;
 }
 
-#projects-index ul.projects div.root a.project,#projects-index a.icon-user {
+#projects-index ul.projects div.root a.project, #projects-index a.project {
   font-family: Roboto, 'Fira Sans', Oxygen, 'Open Sans', Ubuntu, sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   color: #0052CC
+}
+
+#projects-index a.project{
+  font-weight: 500;
 }
 
 #quick-search input[type='text']{
@@ -885,7 +889,7 @@ svg {
   display: none;
 }
 
-#sidebar h3, #sidebar { 
+#sidebar h3, #sidebar {
   font-size: 14px;
 }
 

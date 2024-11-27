@@ -204,7 +204,7 @@ $(document).ready(function(){
     $('<div id="left-nav"></div>').appendTo('#wrapper');
     if($('#main-menu').length == 0){
       $('<div id="main-menu" class="tabs"></div>').appendTo('#left-nav');
-    } 
+    }
     $('#main-menu').appendTo('#left-nav');
     $('html').append(leftIcon);
     $('html').append(RightIcon);
@@ -369,47 +369,54 @@ $(document).ready(function(){
   });
   if($('#accordion') && $('#accordion')[0]) imgObserver.observe($('#accordion')[0], { childList: true, subtree: true });
 
-    // Observe Time sheet comment img changes
-    var tsObserver = new MutationObserver(function(mutationsList, observer) {
-      for(let mutation of mutationsList) {
-        if (mutation.type === 'attributes') {
-          updateOtherIcons();
-        }
+  // Observe Time sheet comment img changes
+  var tsObserver = new MutationObserver(function(mutationsList, observer) {
+    for(let mutation of mutationsList) {
+      if (mutation.type === 'attributes') {
+        updateOtherIcons();
       }
-    });
+    }
+  });
+  observerTSComment(tsObserver);
+  $('.icon.icon-time-add').click(function(){
     observerTSComment(tsObserver);
-    $('.icon.icon-time-add').click(function(){
-      observerTSComment(tsObserver);
-    })
-    
-    $('#admin-menu svg').each(function() {
-      const $svg = $(this);
-      const $anchor = $svg.closest('a');
-      if ($anchor.length) {
-          $anchor.before($svg);
+  })
+
+  $('#admin-menu svg').each(function() {
+    const $svg = $(this);
+    const $anchor = $svg.closest('a');
+    if ($anchor.length) {
+        $anchor.before($svg);
+    }
+  });
+
+  // Prevent chevrons icon to add, edit and spent time icon
+  const targets = $('a.icon-add svg use, a.icon-time-add svg use, a.icon-edit svg use');
+  const observer = new MutationObserver((mutationsList, observer) => {
+    mutationsList.forEach(mutation => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'href') {
+        const currentHref = mutation.target.getAttribute('href');
+        const originalHref = mutation.oldValue;
+        // Only revert if the new value differs from the old value
+        if (currentHref !== originalHref) {
+          observer.disconnect();
+          mutation.target.setAttribute('href', originalHref);
+          observer.observe(mutation.target, { attributes: true, attributeOldValue: true });
+        }
       }
     });
+  });
 
-    // Prevent chevrons icon to add, edit and spent time icon
-    const targets = $('a.icon-add svg use, a.icon-time-add svg use, a.icon-edit svg use');
-    const observer = new MutationObserver((mutationsList, observer) => {
-      mutationsList.forEach(mutation => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'href') {
-          const currentHref = mutation.target.getAttribute('href');
-          const originalHref = mutation.oldValue;
-          // Only revert if the new value differs from the old value
-          if (currentHref !== originalHref) {
-            observer.disconnect();
-            mutation.target.setAttribute('href', originalHref);
-            observer.observe(mutation.target, { attributes: true, attributeOldValue: true });
-          }
-        }
-      });
-    });
-  
-    targets.each(function () {
-      observer.observe(this, { attributes: true, attributeOldValue: true });
-    });
+  targets.each(function () {
+    observer.observe(this, { attributes: true, attributeOldValue: true });
+  });
+
+  //* Fix for Project Member list */
+  if(window.location.pathname.includes('settings/members')) {
+    $('.name.icon.icon-user, .name.icon.icon-group').each(function(){
+      $(this).prop('class', 'name icon-user');
+    })
+  }
 });
 
 function observerTSComment(tsObserver){
