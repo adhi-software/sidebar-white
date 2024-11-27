@@ -908,3 +908,7 @@ a.icon:hover svg, a.icon-only:hover svg {
   stroke: #016bff;
   fill: none !important;
 }
+
+table.list #pay-link{
+  white-space: nowrap;
+}
