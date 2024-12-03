@@ -125,6 +125,37 @@ const colorCodeColors = [
 ];
 
 $(document).ready(function(){
+
+ // Dynamically load Semantic UI CSS
+ const cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css';
+ document.head.appendChild(cssLink);
+
+ // Dynamically load Semantic UI JS
+ const script = document.createElement('script');
+ script.src = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js';
+ script.type = 'text/javascript';
+ script.onload = function () {
+     // Run Semantic UI dropdown initialization after the script is fully loaded
+     $('select').each(function () {
+         const $select = $(this);
+         if (!$select.hasClass('ui dropdown')) {
+             $select.addClass('ui dropdown');
+         }
+     });
+
+     $('.ui.dropdown').dropdown({
+        //  clearable: true,
+        //  fullTextSearch: true
+     });
+ };
+ script.onerror = function () {
+     console.error('Failed to load Semantic UI.');
+ };
+ document.head.appendChild(script);
+
+
   const scrSize = window.matchMedia('(min-width: 900px)');
   if (scrSize.matches) {
     // Top menu setup
