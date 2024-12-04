@@ -140,7 +140,7 @@ $(document).ready(function(){
      // Run Semantic UI dropdown initialization after the script is fully loaded
      $('select').each(function () {
          const $select = $(this);
-         if (!$select.hasClass('ui dropdown')) {
+         if (!$select.hasClass('ui dropdown') && $select.attr('id') != 'available_c' && $select.attr('id') != 'selected_c') {
              $select.addClass('ui dropdown');
          }
      });
