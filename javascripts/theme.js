@@ -126,34 +126,72 @@ const colorCodeColors = [
 
 $(document).ready(function(){
 
- // Dynamically load Semantic UI CSS
- const cssLink = document.createElement('link');
- cssLink.rel = 'stylesheet';
- cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css';
- document.head.appendChild(cssLink);
+  // Dynamically load Semantic UI CSS
+  const cssLink = document.createElement('link');
+  cssLink.rel = 'stylesheet';
+  cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css';
+  document.head.appendChild(cssLink);
 
- // Dynamically load Semantic UI JS
- const script = document.createElement('script');
- script.src = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js';
- script.type = 'text/javascript';
- script.onload = function () {
-     // Run Semantic UI dropdown initialization after the script is fully loaded
-     $('select').each(function () {
-         const $select = $(this);
-         if (!$select.hasClass('ui dropdown')) {
-             $select.addClass('ui dropdown');
-         }
-     });
+  // Dynamically load Semantic UI JS
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js';
+  script.type = 'text/javascript';
+  script.onload = function () {
+      // Run Semantic UI dropdown initialization after the script is fully loaded
+    $('select').each(function () {
+      const $select = $(this);
+      if(
+        !$select.hasClass('ui dropdown')
+        && $select.prop("name") != 'time_entry[][issue_id]'
+        && $select.is(':visible')
+      ){
+        $select.addClass('ui dropdown');
+      }
+    });
 
-     $('.ui.dropdown').dropdown({
-        //  clearable: true,
-        //  fullTextSearch: true
-     });
- };
- script.onerror = function () {
-     console.error('Failed to load Semantic UI.');
- };
- document.head.appendChild(script);
+    $('.ui.dropdown').dropdown({
+      //  clearable: true,
+      //  fullTextSearch: true
+    });
+  };
+  script.onerror = function () {
+      console.error('Failed to load Semantic UI.');
+  };
+  document.head.appendChild(script);
+
+
+  // Load the Semantic UI if new dropdown rendered
+  const targetNode = document.getElementById('content');
+  const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled'] };
+  const callback = function (mutationsList) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        $(mutation.addedNodes).each(function () {
+          if( $(this).is('select')
+            && $(this).is(':visible')
+            && !$(this).hasClass('ui dropdown')
+            && $(this).prop("name") != 'time_entry[][issue_id]'
+          ){
+            $(this).addClass('ui dropdown');
+            $(this).dropdown();
+          }
+        });
+      }
+
+      // Check and update the UI dropdown
+      if (mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
+        const $target = $(mutation.target);
+        if ($target.prop('disabled')) {
+          $target.parent().addClass('disabled');
+        } else {
+          $target.parent().removeClass('disabled');
+        }
+      }
+    }
+  };
+
+  const ddObserver = new MutationObserver(callback);
+  ddObserver.observe(targetNode, config);
 
 
   const scrSize = window.matchMedia('(min-width: 900px)');

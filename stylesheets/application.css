@@ -912,3 +912,7 @@ a.icon:hover svg, a.icon-only:hover svg {
 table.list #pay-link{
   white-space: nowrap;
 }
+
+#issueTable, #wktimeStatus {
+  overflow: auto;
+}
