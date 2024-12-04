@@ -144,6 +144,8 @@ $(document).ready(function(){
         !$select.hasClass('ui dropdown')
         && $select.prop("name") != 'time_entry[][issue_id]'
         && $select.is(':visible')
+        && $select.attr('id') != 'available_c'
+        && $select.attr('id') != 'selected_c'
       ){
         $select.addClass('ui dropdown');
       }

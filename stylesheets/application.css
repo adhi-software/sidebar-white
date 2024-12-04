@@ -916,3 +916,7 @@ table.list #pay-link{
 #issueTable, #wktimeStatus {
   overflow: auto;
 }
+
+html>body .tabular p{
+  overflow: unset;
+}
