@@ -137,7 +137,7 @@ $(document).ready(function(){
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js';
   script.type = 'text/javascript';
   script.onload = function () {
-      // Run Semantic UI dropdown initialization after the script is fully loaded
+    // Run Semantic UI dropdown initialization after the script is fully loaded
     $('select').each(function () {
       const $select = $(this);
       if(
@@ -152,8 +152,7 @@ $(document).ready(function(){
     });
 
     $('.ui.dropdown').dropdown({
-      //  clearable: true,
-      //  fullTextSearch: true
+       clearable: true
     });
   };
   script.onerror = function () {
@@ -161,40 +160,68 @@ $(document).ready(function(){
   };
   document.head.appendChild(script);
 
-
   // Load the Semantic UI if new dropdown rendered
   const targetNode = document.getElementById('content');
-  const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled'] };
+  const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'multiple'] };
   const callback = function (mutationsList) {
     for (const mutation of mutationsList) {
       if (mutation.type === 'childList') {
         $(mutation.addedNodes).each(function () {
-          if( $(this).is('select')
+          if($(this).is('select')
             && $(this).is(':visible')
             && !$(this).hasClass('ui dropdown')
             && $(this).prop("name") != 'time_entry[][issue_id]'
           ){
             $(this).addClass('ui dropdown');
-            $(this).dropdown();
+            $(this).dropdown({
+              clearable: true
+            });
+          }
+
+          //TODO: Need to add this change to the removed nodes also
+          // Update the UI dropdown when options are updated
+          const $dropdown = $(this).parent();
+          if ($(this).is('option') && $dropdown.hasClass('ui dropdown')) {
+            const $parent = $dropdown.parent();
+            if ($parent.length) {
+              $dropdown.insertBefore($parent);
+              $parent.remove();
+              $dropdown.dropdown();
+            }
           }
         });
       }
 
-      // Check and update the UI dropdown
-      if (mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
-        const $target = $(mutation.target);
+      // Check and update the UI dropdown based on DD attributes
+      const $target = $(mutation.target);
+      if ($(mutation.target).is('select') && mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
         if ($target.prop('disabled')) {
           $target.parent().addClass('disabled');
         } else {
           $target.parent().removeClass('disabled');
         }
       }
+      if ($(mutation.target).is('select') && mutation.type === 'attributes' && mutation.attributeName === 'multiple') {
+        if ($target.prop('multiple')) {
+          $target.dropdown('destroy');
+          $target.dropdown({
+            multiple: true
+          });
+        } else {
+          $target.dropdown('destroy');
+          $target.dropdown({
+            clearable: true
+          });
+        }
+      }
     }
   };
-
   const ddObserver = new MutationObserver(callback);
   ddObserver.observe(targetNode, config);
 
+  $('#content').on('click', '.toggle-multiselect', function() {
+    toggleMultiSelect($(this).siblings().find('select'));
+  });
 
   const scrSize = window.matchMedia('(min-width: 900px)');
   if (scrSize.matches) {
