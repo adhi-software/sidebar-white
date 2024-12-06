@@ -129,12 +129,12 @@ $(document).ready(function(){
   // Dynamically load Semantic UI CSS
   const cssLink = document.createElement('link');
   cssLink.rel = 'stylesheet';
-  cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css';
+  cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/components/dropdown.min.css';
   document.head.appendChild(cssLink);
 
   // Dynamically load Semantic UI JS
   const script = document.createElement('script');
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js';
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/components/dropdown.min.js';
   script.type = 'text/javascript';
   script.onload = function () {
     // Run Semantic UI dropdown initialization after the script is fully loaded
