@@ -917,6 +917,6 @@ table.list #pay-link{
   overflow: auto;
 }
 
-html>body .tabular p{
+html>body .tabular p, table.list, .table-list{
   overflow: unset;
 }
