@@ -143,7 +143,11 @@ $(document).ready(function(){
       if(
         !$select.hasClass('ui dropdown')
         && !$(this).hasClass("select2-hidden-accessible")
-        && ($(this).is(':visible') || ($(this).parents('.tab-content').length > 0)) // For settings tab content
+        && (
+          $(this).is(':visible')
+          || ($select.parents('.tab-content').length > 0)
+          || $select.parents('.ui-widget').length > 0
+        ) // For settings tab content && Jquery Popup dropdowns
         && $select.attr('id') != 'available_c'
         && $select.attr('id') != 'selected_c'
         && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
@@ -165,35 +169,24 @@ $(document).ready(function(){
   function observeDD() {
     // Load the Semantic UI if new dropdown rendered
     const targetNode = document.getElementById('content');
-    const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'multiple'] };
+    const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'multiple', 'style', 'class'] };
     const callback = function (mutationsList) {
       for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
           $(mutation.addedNodes).each(function () {
-            const $DDs = $(this).find('select');
-            $DDs.each(function(){
-              if($(this).is('select')
-                && !$(this).hasClass('ui dropdown')
-                && !$(this).hasClass("select2-hidden-accessible")
-              ){
-                $(this).addClass('ui dropdown');
-                $(this).dropdown({ placeholder: false });
-              }
-            })
+            initDropdownUI(this);
 
             //TODO: Need to add this change to the removed nodes also
             // Update the UI dropdown when options are updated
-            // const $dropdown = $(this).parent();
-            // if ($(this).is('option') && $dropdown.hasClass('ui dropdown')) {
-            //   const $parent = $dropdown.parent();
-            //   if ($parent.length) {
-            //     // $dropdown.insertBefore($parent);
-            //     // $parent.remove();
-            //     // $dropdown.dropdown();
-            //     // $dropdown.dropdown('refreshItems');
-            //     // $dropdown.dropdown();
-            //   }
-            // }
+            const $dropdown = $(this).parent();
+            if ($(this).is('option') && $dropdown.hasClass('ui dropdown')) {
+              const $parent = $dropdown.parent();
+              if ($parent.length) {
+                $dropdown.insertBefore($parent);
+                $parent.remove();
+                $dropdown.dropdown({ placeholder: false });
+              }
+            }
           });
         }
 
@@ -224,15 +217,20 @@ $(document).ready(function(){
             $parent.removeClass('multiple');
           }
         }
+        // Set DD UI for hidden dropdown when visible
+        if(mutation.type == 'attributes'){
+          initDropdownUI($target);
+        }
       }
     };
     const ddObserver = new MutationObserver(callback);
     ddObserver.observe(targetNode, config);
+    ddObserver.observe($('.ui-dialog')[0], config);
+  }
 
     $('#content').on('click', '.toggle-multiselect', function() {
       toggleMultiSelect($(this).siblings().find('select'));
     });
-  }
 
   const scrSize = window.matchMedia('(min-width: 900px)');
   if (scrSize.matches) {
@@ -527,6 +525,19 @@ $(document).ready(function(){
     })
   }
 });
+
+function initDropdownUI($this){
+  const $allDDs = $($this).find('select');
+  $allDDs.each(function(){
+    if($(this).is('select')
+      && !$(this).hasClass('ui dropdown')
+      && !$(this).hasClass("select2-hidden-accessible")
+    ){
+      $(this).addClass('ui dropdown');
+      $(this).dropdown({ placeholder: false });
+    }
+  })
+}
 
 function observerTSComment(tsObserver){
   $("[id^='custfield_img']").each(function(){

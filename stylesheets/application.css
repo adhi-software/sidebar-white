@@ -921,3 +921,12 @@ table.list #pay-link{
 html>body .tabular p, table.list, .table-list{
   overflow: unset;
 }
+
+#salaryCompDeps label {
+  margin-left: 0px;
+  width: unset;
+}
+
+#salaryCompDeps .ui.selection.dropdown {
+  min-width: 10em;
+}
