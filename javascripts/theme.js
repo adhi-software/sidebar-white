@@ -167,13 +167,14 @@ $(document).ready(function(){
     for (const mutation of mutationsList) {
       if (mutation.type === 'childList') {
         $(mutation.addedNodes).each(function () {
-          if($(this).is('select')
-            && $(this).is(':visible')
-            && !$(this).hasClass('ui dropdown')
-            && $(this).prop("name") != 'time_entry[][issue_id]'
+          const $ele = $(this).find('select')
+          if($ele.is('select')
+            && $ele.is(':visible')
+            && !$ele.hasClass('ui dropdown')
+            && $ele.prop("name") != 'time_entry[][issue_id]'
           ){
-            $(this).addClass('ui dropdown');
-            $(this).dropdown({
+            $ele.addClass('ui dropdown');
+            $ele.dropdown({
               clearable: true
             });
           }
