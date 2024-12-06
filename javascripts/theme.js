@@ -147,6 +147,7 @@ $(document).ready(function(){
         && $select.attr('id') != 'available_c'
         && $select.attr('id') != 'selected_c'
         && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
+        && !$(this).hasClass("multi-row")
       ){
         $select.addClass('ui dropdown');
       }
