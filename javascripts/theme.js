@@ -142,8 +142,8 @@ $(document).ready(function(){
       const $select = $(this);
       if(
         !$select.hasClass('ui dropdown')
-        && $select.prop("name") != 'time_entry[][issue_id]'
-        && $select.is(':visible')
+        && !$(this).hasClass("select2-hidden-accessible")
+        && ($(this).is(':visible') || ($(this).parents('.tab-content').length > 0))
         && $select.attr('id') != 'available_c'
         && $select.attr('id') != 'selected_c'
       ){
@@ -154,75 +154,88 @@ $(document).ready(function(){
     $('.ui.dropdown').dropdown({
        clearable: true
     });
+
+    observeDD();
   };
   script.onerror = function () {
       console.error('Failed to load Semantic UI.');
   };
   document.head.appendChild(script);
 
-  // Load the Semantic UI if new dropdown rendered
-  const targetNode = document.getElementById('content');
-  const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'multiple'] };
-  const callback = function (mutationsList) {
-    for (const mutation of mutationsList) {
-      if (mutation.type === 'childList') {
-        $(mutation.addedNodes).each(function () {
-          const $ele = $(this).find('select')
-          if($ele.is('select')
-            && $ele.is(':visible')
-            && !$ele.hasClass('ui dropdown')
-            && $ele.prop("name") != 'time_entry[][issue_id]'
-          ){
-            $ele.addClass('ui dropdown');
-            $ele.dropdown({
-              clearable: true
-            });
-          }
+  function observeDD() {
+    // Load the Semantic UI if new dropdown rendered
+    const targetNode = document.getElementById('content');
+    const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'multiple'] };
+    const callback = function (mutationsList) {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          $(mutation.addedNodes).each(function () {
+            const $DDs = $(this).find('select');
+            $DDs.each(function(){
+              if($(this).is('select')
+                && ($(this).is(':visible') || ($(this).parents('.tab-content').length > 0))
+                && !$(this).hasClass('ui dropdown')
+                && !$(this).hasClass("select2-hidden-accessible")
+              ){
+                $(this).addClass('ui dropdown');
+                $(this).dropdown({
+                  clearable: true
+              });
+              }
+            })
 
-          //TODO: Need to add this change to the removed nodes also
-          // Update the UI dropdown when options are updated
-          const $dropdown = $(this).parent();
-          if ($(this).is('option') && $dropdown.hasClass('ui dropdown')) {
-            const $parent = $dropdown.parent();
-            if ($parent.length) {
-              $dropdown.insertBefore($parent);
-              $parent.remove();
-              $dropdown.dropdown();
-            }
-          }
-        });
-      }
-
-      // Check and update the UI dropdown based on DD attributes
-      const $target = $(mutation.target);
-      if ($(mutation.target).is('select') && mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
-        if ($target.prop('disabled')) {
-          $target.parent().addClass('disabled');
-        } else {
-          $target.parent().removeClass('disabled');
-        }
-      }
-      if ($(mutation.target).is('select') && mutation.type === 'attributes' && mutation.attributeName === 'multiple') {
-        if ($target.prop('multiple')) {
-          $target.dropdown('destroy');
-          $target.dropdown({
-            multiple: true
-          });
-        } else {
-          $target.dropdown('destroy');
-          $target.dropdown({
-            clearable: true
+            //TODO: Need to add this change to the removed nodes also
+            // Update the UI dropdown when options are updated
+            // const $dropdown = $(this).parent();
+            // if ($(this).is('option') && $dropdown.hasClass('ui dropdown')) {
+            //   const $parent = $dropdown.parent();
+            //   if ($parent.length) {
+            //     // $dropdown.insertBefore($parent);
+            //     // $parent.remove();
+            //     // $dropdown.dropdown();
+            //     // $dropdown.dropdown('refreshItems');
+            //     // $dropdown.dropdown();
+            //   }
+            // }
           });
         }
-      }
-    }
-  };
-  const ddObserver = new MutationObserver(callback);
-  ddObserver.observe(targetNode, config);
 
-  $('#content').on('click', '.toggle-multiselect', function() {
-    toggleMultiSelect($(this).siblings().find('select'));
-  });
+        // Check and update the UI dropdown based on DD attributes
+        const $target = $(mutation.target);
+        const $parent = $target.parent();
+        if ($target.is('select') && mutation.type == 'attributes' && mutation.attributeName == 'disabled') {
+          if ($target.prop('disabled')) {
+            $parent.addClass('disabled');
+          } else {
+            $parent.removeClass('disabled');
+          }
+        }
+        if ($target.is('option') && mutation.type == 'attributes' && mutation.attributeName == 'disabled') {
+          const $select = $target.parents('select');
+          const $div = $select.parent();
+          $select.insertBefore($div);
+          $div.remove();
+          $select.dropdown();
+        }
+        if ($target.is('select') && mutation.type == 'attributes' && mutation.attributeName == 'multiple') {
+          if ($target.prop('multiple')) {
+            $target.insertBefore($parent);
+            $parent.remove();
+            $target.dropdown();
+          } else {
+            $target.dropdown('clear')
+            $parent.removeClass('multiple');
+          }
+        }
+      }
+    };
+    const ddObserver = new MutationObserver(callback);
+    ddObserver.observe(targetNode, config);
+
+    $('#content').on('click', '.toggle-multiselect', function() {
+      toggleMultiSelect($(this).siblings().find('select'));
+    });
+  }
 
   const scrSize = window.matchMedia('(min-width: 900px)');
   if (scrSize.matches) {
