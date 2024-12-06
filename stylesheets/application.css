@@ -693,6 +693,7 @@ table.list:not(.odd-even) tbody tr:nth-child(even):hover, .even:hover, #issue-ch
   width: fit-content;
   display: flex;
   align-items: center;
+  box-sizing: unset;
 }
 
 form#query_form fieldset .wk-contextual {

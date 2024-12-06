@@ -143,17 +143,16 @@ $(document).ready(function(){
       if(
         !$select.hasClass('ui dropdown')
         && !$(this).hasClass("select2-hidden-accessible")
-        && ($(this).is(':visible') || ($(this).parents('.tab-content').length > 0))
+        && ($(this).is(':visible') || ($(this).parents('.tab-content').length > 0)) // For settings tab content
         && $select.attr('id') != 'available_c'
         && $select.attr('id') != 'selected_c'
+        && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
       ){
         $select.addClass('ui dropdown');
       }
     });
 
-    $('.ui.dropdown').dropdown({
-       clearable: true
-    });
+    $('.ui.dropdown').dropdown({ placeholder: false });
 
     observeDD();
   };
@@ -173,14 +172,11 @@ $(document).ready(function(){
             const $DDs = $(this).find('select');
             $DDs.each(function(){
               if($(this).is('select')
-                && ($(this).is(':visible') || ($(this).parents('.tab-content').length > 0))
                 && !$(this).hasClass('ui dropdown')
                 && !$(this).hasClass("select2-hidden-accessible")
               ){
                 $(this).addClass('ui dropdown');
-                $(this).dropdown({
-                  clearable: true
-              });
+                $(this).dropdown({ placeholder: false });
               }
             })
 
@@ -215,15 +211,15 @@ $(document).ready(function(){
           const $div = $select.parent();
           $select.insertBefore($div);
           $div.remove();
-          $select.dropdown();
+          $select.dropdown({ placeholder: false });
         }
         if ($target.is('select') && mutation.type == 'attributes' && mutation.attributeName == 'multiple') {
           if ($target.prop('multiple')) {
             $target.insertBefore($parent);
             $parent.remove();
-            $target.dropdown();
+            $target.dropdown({ placeholder: false });
           } else {
-            $target.dropdown('clear')
+            $target.dropdown('clear');
             $parent.removeClass('multiple');
           }
         }
@@ -651,12 +647,6 @@ function updateOtherIcons(){
       else{
         parent = $(this).parent('a');
       }
-      // $(parent).css({
-      //   'background-image': "url('data:image/svg+xml, "+encodeURIComponent(otherIcons[key])+"')",
-      //   'width': '16px',
-      //   'height': '16px'
-      // }).addClass('icon');
-      // $(parent).html(otherIcons[key]);
       $(parent).prop('title', $(this).prop('title'));
       $(this).hide();
     }
