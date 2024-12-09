@@ -892,6 +892,16 @@ a.icon:hover svg, a.icon-only:hover svg {
   fill: none !important;
 }
 
-html>body .tabular p, table.list, .table-list{
+html>body .tabular p, table.list, .table-list {
   overflow: unset;
+}
+
+.splitcontent,
+.ui-widget-content,
+.ui-dialog .ui-dialog-content {
+  overflow: visible;
+}
+
+.ui-widget-header {
+  background-color:#f7f8f9;
 }
