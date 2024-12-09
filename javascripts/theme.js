@@ -168,7 +168,7 @@ $(document).ready(function(){
 
   function observeDD() {
     // Load the Semantic UI if new dropdown rendered
-    const targetNode = document.getElementById('content');
+    const targetNode = $('body')[0];
     const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'multiple', 'style', 'class'] };
     const callback = function (mutationsList) {
       for (const mutation of mutationsList) {
@@ -225,7 +225,6 @@ $(document).ready(function(){
     };
     const ddObserver = new MutationObserver(callback);
     ddObserver.observe(targetNode, config);
-    if($('.ui-dialog').length > 0) ddObserver.observe($('.ui-dialog')[0], config);
   }
 
     $('#content').on('click', '.toggle-multiselect', function() {

@@ -935,3 +935,7 @@ html>body .tabular p, table.list, .table-list{
 #salaryCompDeps .ui.selection.dropdown {
   min-width: 10em;
 }
+
+.ui-widget-content{
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
