@@ -148,8 +148,8 @@ $(document).ready(function(){
           || ($select.parents('.tab-content').length > 0)
           || $select.parents('.ui-widget').length > 0
         ) // For settings tab content && Jquery Popup dropdowns
-        && $select.attr('id') != 'available_c'
-        && $select.attr('id') != 'selected_c'
+        && $select.prop('id') != 'available_c'
+        && $select.prop('id') != 'selected_c'
         && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
         && !$(this).hasClass("multi-row")
       ){
@@ -225,7 +225,7 @@ $(document).ready(function(){
     };
     const ddObserver = new MutationObserver(callback);
     ddObserver.observe(targetNode, config);
-    ddObserver.observe($('.ui-dialog')[0], config);
+    if($('.ui-dialog').length > 0) ddObserver.observe($('.ui-dialog')[0], config);
   }
 
     $('#content').on('click', '.toggle-multiselect', function() {
@@ -245,8 +245,8 @@ $(document).ready(function(){
     $(ele).appendTo('#quick-search label');
     const srch = '<div class = expandSearch ></div>';
     $('#quick-search #q').before(srch).prependTo('.expandSearch');
-    $("#project-jump .drdn-trigger").attr("title", "Jump to project");
-    $("#userprofile").attr("title", "User profile");
+    $("#project-jump .drdn-trigger").prop("title", "Jump to project");
+    $("#userprofile").prop("title", "User profile");
     $("#loggedas").prependTo("#account");
     $("#account").appendTo("#top-menu");
     $('#project-jump .drdn-trigger').html(projIcon);
@@ -261,20 +261,20 @@ $(document).ready(function(){
     var account = ' <div id="userprofile"><div class="profileicon account"></div>';
     account += '<div id="profilemenu" style="display: none;"></div></div>';
     $("#quick-search").append(account);
-    $("#account ul").attr("id", "profilelist").appendTo("#profilemenu");
+    $("#account ul").prop("id", "profilelist").appendTo("#profilemenu");
     $("#account").remove();
     $('#userprofile').appendTo('#quick-search');
 
     // For user profile popup setup
     $(".account").click(function() {
-      var X = $(this).attr('id');
+      var X = this.id;
       if(X == 1) {
         $("#profilemenu").hide();
-        $(this).attr('id', '0');
+        $(this).prop('id', '0');
       }
       else {
         $("#profilemenu").show();
-        $(this).attr('id', '1');
+        $(this).prop('id', '1');
       }
     });
     $("#profilemenu, .account").mouseup(function() {
@@ -282,7 +282,7 @@ $(document).ready(function(){
     });
     $(document).mouseup(function() {
       $("#profilemenu").hide();
-      $(".account").attr('id', '');
+      $(".account").prop('id', '');
     });
 
     // The selected class should be added to the menu so that it matches the current page
@@ -532,6 +532,8 @@ function initDropdownUI($this){
     if($(this).is('select')
       && !$(this).hasClass('ui dropdown')
       && !$(this).hasClass("select2-hidden-accessible")
+      && this.id != 'available_c'
+      && this.id != 'selected_c'
     ){
       $(this).addClass('ui dropdown');
       $(this).dropdown({ placeholder: false });
