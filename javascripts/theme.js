@@ -233,7 +233,7 @@ $(document).ready(function(){
 
   // hide + menu on project menus
   if ($('#new-object').length > 0) $('#new-object').parent().hide();
-  
+
   const scrSize = window.matchMedia('(min-width: 900px)');
   if (scrSize.matches) {
     // Top menu setup
@@ -532,10 +532,11 @@ function initDropdownUI($this){
   const $allDDs = $($this).find('select');
   $allDDs.each(function(){
     if($(this).is('select')
-      && !$(this).hasClass('ui dropdown')
+      // && !$(this).hasClass('ui dropdown')
       && !$(this).hasClass("select2-hidden-accessible")
       && this.id != 'available_c'
       && this.id != 'selected_c'
+      && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
     ){
       $(this).addClass('ui dropdown');
       $(this).dropdown({ placeholder: false });
