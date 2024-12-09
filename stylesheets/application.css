@@ -914,6 +914,10 @@ table.list #pay-link{
   white-space: nowrap;
 }
 
+#issueTable {
+  display: block;
+}
+
 #issueTable, #wktimeStatus {
   overflow: auto;
 }
