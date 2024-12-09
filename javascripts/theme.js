@@ -231,6 +231,9 @@ $(document).ready(function(){
       toggleMultiSelect($(this).siblings().find('select'));
     });
 
+  // hide + menu on project menus
+  if ($('#new-object').length > 0) $('#new-object').parent().hide();
+  
   const scrSize = window.matchMedia('(min-width: 900px)');
   if (scrSize.matches) {
     // Top menu setup
