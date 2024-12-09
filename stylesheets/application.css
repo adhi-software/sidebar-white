@@ -732,7 +732,7 @@ input[type="submit"], button {
 	color: var(--ds-text-inverse, #FFFFFF);
 	cursor: pointer;
 	height: 2.28571em;
-	line-height: 2.28571em;
+	line-height: 2.28571em !important;
 	padding: 0px 10px;
 	vertical-align: middle;
 	width: auto;
@@ -792,6 +792,7 @@ input[type='radio'], input[type='checkbox'] {
   width: 20px;
   height: 20px;
   accent-color: #0c66e4;
+  margin: 0 4px;
 }
 
 #context-menu, #context-menu a{
