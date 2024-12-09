@@ -696,21 +696,10 @@ table.list:not(.odd-even) tbody tr:nth-child(even):hover, .even:hover, #issue-ch
   box-sizing: unset;
 }
 
-form#query_form fieldset .wk-contextual {
-	text-align: left;
-	white-space: nowrap;
-	line-height:1.4em;
-	margin-top:5px;
-	margin-bottom:10px;
-	padding-left: 10px;
-	font-size:0.9em;
-}
-
 form#query_form fieldset > div > b > label {
 	float: unset!important;
 	padding: 5px;
 }
-
 
 /*submit button change */
 input[type="submit"], button {
@@ -772,10 +761,6 @@ table#materialtable {
   background-color: #FFF;
 }
 
-form#wkdelivery_edit table td , form#wkshipment_edit table td {
-  width: 250px;
-}
-
 /* Basic styles for the text box */
 input[type="text"], input[type="date"], input[type="password"]{
 	background-color: #fff;
@@ -806,10 +791,6 @@ input[type='radio'], input[type='checkbox'] {
 select {
   height: 32px;
 }
-
-/* select#time_entry__activity_id{
-  width: auto !important;
-} */
 
 input:focus, select:focus, textarea:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="password"]:focus {
   border: 2px solid #1D7AFC;
@@ -911,35 +892,6 @@ a.icon:hover svg, a.icon-only:hover svg {
   fill: none !important;
 }
 
-table.list #pay-link{
-  white-space: nowrap;
-}
-
-#issueTable {
-  display: block;
-}
-
-#issueTable, #wktimeStatus {
-  overflow: auto;
-}
-
 html>body .tabular p, table.list, .table-list{
-  overflow: unset;
-}
-
-#salaryCompDeps label {
-  margin-left: 0px;
-  width: unset;
-}
-
-#salaryCompDeps .ui.selection.dropdown {
-  min-width: 10em;
-}
-
-.ui-widget-content{
-  box-shadow: 0 2px 10px rgba(0,0,0,.2);
-}
-
-#product_item_form .splitcontent{
   overflow: unset;
 }
