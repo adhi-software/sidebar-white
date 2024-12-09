@@ -939,3 +939,7 @@ html>body .tabular p, table.list, .table-list{
 .ui-widget-content{
   box-shadow: 0 2px 10px rgba(0,0,0,.2);
 }
+
+#product_item_form .splitcontent{
+  overflow: unset;
+}
