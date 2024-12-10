@@ -537,6 +537,7 @@ function initDropdownUI($this){
       && this.id != 'available_c'
       && this.id != 'selected_c'
       && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
+      && !$(this).hasClass("multi-row")
     ){
       $(this).addClass('ui dropdown');
       $(this).dropdown({ placeholder: false });
