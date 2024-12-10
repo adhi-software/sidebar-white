@@ -33,7 +33,6 @@
 }
 
 #top-menu #my-page-icon {
-  /* background-image: url('../../../images/user.png'); */
   background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2229%22%20height%3D%2229%22%20viewBox%3D%220%200%2024%2024%22%20style%3D%22fill%3A%20%2344546f%22%3E%3Cpath%20d%3D%22M12%202C6.579%202%202%206.579%202%2012s4.579%2010%2010%2010%2010-4.579%2010-10S17.421%202%2012%202zm0%205c1.727%200%203%201.272%203%203s-1.273%203-3%203c-1.726%200-3-1.272-3-3s1.274-3%203-3zm-5.106%209.772c.897-1.32%202.393-2.2%204.106-2.2h2c1.714%200%203.209.88%204.106%202.2C15.828%2018.14%2014.015%2019%2012%2019s-3.828-.86-5.106-2.228z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
 }
 
@@ -693,16 +692,7 @@ table.list:not(.odd-even) tbody tr:nth-child(even):hover, .even:hover, #issue-ch
   width: fit-content;
   display: flex;
   align-items: center;
-}
-
-form#query_form fieldset .wk-contextual {
-	text-align: left;
-	white-space: nowrap;
-	line-height:1.4em;
-	margin-top:5px;
-	margin-bottom:10px;
-	padding-left: 10px;
-	font-size:0.9em;
+  box-sizing: unset;
 }
 
 form#query_form fieldset > div > b > label {
@@ -710,9 +700,8 @@ form#query_form fieldset > div > b > label {
 	padding: 5px;
 }
 
-
 /*submit button change */
-input[type="submit"], button {
+input[type="submit"], button, .ui-dialog .ui-dialog-buttonpane button {
 	-moz-box-align: baseline;
 	align-items: baseline;
 	border-width: 0px;
@@ -731,7 +720,7 @@ input[type="submit"], button {
 	color: var(--ds-text-inverse, #FFFFFF);
 	cursor: pointer;
 	height: 2.28571em;
-	line-height: 2.28571em;
+	line-height: 2.28571em !important;
 	padding: 0px 10px;
 	vertical-align: middle;
 	width: auto;
@@ -771,10 +760,6 @@ table#materialtable {
   background-color: #FFF;
 }
 
-form#wkdelivery_edit table td , form#wkshipment_edit table td {
-  width: 250px;
-}
-
 /* Basic styles for the text box */
 input[type="text"], input[type="date"], input[type="password"]{
 	background-color: #fff;
@@ -791,6 +776,7 @@ input[type='radio'], input[type='checkbox'] {
   width: 20px;
   height: 20px;
   accent-color: #0c66e4;
+  margin: 0 4px;
 }
 
 #context-menu, #context-menu a{
@@ -804,10 +790,6 @@ input[type='radio'], input[type='checkbox'] {
 select {
   height: 32px;
 }
-
-/* select#time_entry__activity_id{
-  width: auto !important;
-} */
 
 input:focus, select:focus, textarea:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="password"]:focus {
   border: 2px solid #1D7AFC;
@@ -909,6 +891,25 @@ a.icon:hover svg, a.icon-only:hover svg {
   fill: none !important;
 }
 
-table.list #pay-link{
-  white-space: nowrap;
+html>body .tabular p, table.list, .table-list {
+  overflow: unset;
+}
+
+.splitcontent,
+.ui-widget-content,
+.ui-dialog .ui-dialog-content {
+  overflow: visible;
+}
+
+.ui-widget-header {
+  background-color:#f7f8f9;
+}
+
+html>body  {
+  overflow: unset;
+  line-height: inherit;
+}
+
+div.issue .attribute .value {
+  overflow: hidden;
 }

@@ -125,6 +125,115 @@ const colorCodeColors = [
 ];
 
 $(document).ready(function(){
+
+  // Dynamically load Semantic UI CSS
+  const cssLink = document.createElement('link');
+  cssLink.rel = 'stylesheet';
+  cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css';
+  document.head.appendChild(cssLink);
+
+  // Dynamically load Semantic UI JS
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js';
+  script.type = 'text/javascript';
+  script.onload = function () {
+    // Run Semantic UI dropdown initialization after the script is fully loaded
+    $('select').each(function () {
+      const $select = $(this);
+      if(
+        !$select.hasClass('ui dropdown')
+        && !$(this).hasClass("select2-hidden-accessible")
+        && (
+          $(this).is(':visible')
+          || ($select.parents('.tab-content').length > 0)
+          || $select.parents('.ui-widget').length > 0
+        ) // For settings tab content && Jquery Popup dropdowns
+        && $select.prop('id') != 'available_c'
+        && $select.prop('id') != 'selected_c'
+        && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
+        && !$(this).hasClass("multi-row")
+      ){
+        $select.addClass('ui dropdown');
+      }
+    });
+
+    $('.ui.dropdown').dropdown({ placeholder: false });
+
+    observeDD();
+  };
+  script.onerror = function () {
+      console.error('Failed to load Semantic UI.');
+  };
+  document.head.appendChild(script);
+
+  function observeDD() {
+    // Load the Semantic UI if new dropdown rendered
+    const targetNode = $('body')[0];
+    const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'multiple', 'style', 'class'] };
+    const callback = function (mutationsList) {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          $(mutation.addedNodes).each(function () {
+            initDropdownUI(this);
+
+            //TODO: Need to add this change to the removed nodes also
+            // Update the UI dropdown when options are updated
+            const $dropdown = $(this).parent();
+            if ($(this).is('option') && $dropdown.hasClass('ui dropdown')) {
+              const $parent = $dropdown.parent();
+              if ($parent.length) {
+                $dropdown.insertBefore($parent);
+                $parent.remove();
+                $dropdown.dropdown({ placeholder: false });
+              }
+            }
+          });
+        }
+
+        // Check and update the UI dropdown based on DD attributes
+        const $target = $(mutation.target);
+        const $parent = $target.parent();
+        if ($target.is('select') && mutation.type == 'attributes' && mutation.attributeName == 'disabled') {
+          if ($target.prop('disabled')) {
+            $parent.addClass('disabled');
+          } else {
+            $parent.removeClass('disabled');
+          }
+        }
+        if ($target.is('option') && mutation.type == 'attributes' && mutation.attributeName == 'disabled') {
+          const $select = $target.parents('select');
+          const $div = $select.parent();
+          $select.insertBefore($div);
+          $div.remove();
+          $select.dropdown({ placeholder: false });
+        }
+        if ($target.is('select') && mutation.type == 'attributes' && mutation.attributeName == 'multiple') {
+          if ($target.prop('multiple')) {
+            $target.insertBefore($parent);
+            $parent.remove();
+            $target.dropdown({ placeholder: false });
+          } else {
+            $target.dropdown('clear');
+            $parent.removeClass('multiple');
+          }
+        }
+        // Set DD UI for hidden dropdown when visible
+        if(mutation.type == 'attributes'){
+          initDropdownUI($target);
+        }
+      }
+    };
+    const ddObserver = new MutationObserver(callback);
+    ddObserver.observe(targetNode, config);
+  }
+
+    $('#content').on('click', '.toggle-multiselect', function() {
+      toggleMultiSelect($(this).siblings().find('select'));
+    });
+
+  // hide + menu on project menus
+  if ($('#new-object').length > 0) $('#new-object').parent().hide();
+
   const scrSize = window.matchMedia('(min-width: 900px)');
   if (scrSize.matches) {
     // Top menu setup
@@ -138,8 +247,8 @@ $(document).ready(function(){
     $(ele).appendTo('#quick-search label');
     const srch = '<div class = expandSearch ></div>';
     $('#quick-search #q').before(srch).prependTo('.expandSearch');
-    $("#project-jump .drdn-trigger").attr("title", "Jump to project");
-    $("#userprofile").attr("title", "User profile");
+    $("#project-jump .drdn-trigger").prop("title", "Jump to project");
+    $("#userprofile").prop("title", "User profile");
     $("#loggedas").prependTo("#account");
     $("#account").appendTo("#top-menu");
     $('#project-jump .drdn-trigger').html(projIcon);
@@ -154,20 +263,20 @@ $(document).ready(function(){
     var account = ' <div id="userprofile"><div class="profileicon account"></div>';
     account += '<div id="profilemenu" style="display: none;"></div></div>';
     $("#quick-search").append(account);
-    $("#account ul").attr("id", "profilelist").appendTo("#profilemenu");
+    $("#account ul").prop("id", "profilelist").appendTo("#profilemenu");
     $("#account").remove();
     $('#userprofile').appendTo('#quick-search');
 
     // For user profile popup setup
     $(".account").click(function() {
-      var X = $(this).attr('id');
+      var X = this.id;
       if(X == 1) {
         $("#profilemenu").hide();
-        $(this).attr('id', '0');
+        $(this).prop('id', '0');
       }
       else {
         $("#profilemenu").show();
-        $(this).attr('id', '1');
+        $(this).prop('id', '1');
       }
     });
     $("#profilemenu, .account").mouseup(function() {
@@ -175,7 +284,7 @@ $(document).ready(function(){
     });
     $(document).mouseup(function() {
       $("#profilemenu").hide();
-      $(".account").attr('id', '');
+      $(".account").prop('id', '');
     });
 
     // The selected class should be added to the menu so that it matches the current page
@@ -391,7 +500,7 @@ $(document).ready(function(){
   });
 
   // Prevent chevrons icon to add, edit and spent time icon
-  const targets = $('a.icon-add svg use, a.icon-time-add svg use, a.icon-edit svg use, a.icon-copy svg use, a.icon-user svg use');
+  const targets = $('a.icon-add svg use, a.icon-time-add svg use, a.icon-edit svg use, a.icon-copy svg use, a.icon-user svg use, a.icon-fav svg use');
   const observer = new MutationObserver((mutationsList, observer) => {
     mutationsList.forEach(mutation => {
       if (mutation.type === 'attributes' && mutation.attributeName === 'href') {
@@ -418,6 +527,23 @@ $(document).ready(function(){
     })
   }
 });
+
+function initDropdownUI($this){
+  const $allDDs = $($this).find('select');
+  $allDDs.each(function(){
+    if($(this).is('select')
+      // && !$(this).hasClass('ui dropdown')
+      && !$(this).hasClass("select2-hidden-accessible")
+      && this.id != 'available_c'
+      && this.id != 'selected_c'
+      && !(this.name.includes('column') && $select.prop('multiple')) // To skip Redmine multi selection
+      && !$(this).hasClass("multi-row")
+    ){
+      $(this).addClass('ui dropdown');
+      $(this).dropdown({ placeholder: false });
+    }
+  })
+}
 
 function observerTSComment(tsObserver){
   $("[id^='custfield_img']").each(function(){
@@ -539,12 +665,6 @@ function updateOtherIcons(){
       else{
         parent = $(this).parent('a');
       }
-      // $(parent).css({
-      //   'background-image': "url('data:image/svg+xml, "+encodeURIComponent(otherIcons[key])+"')",
-      //   'width': '16px',
-      //   'height': '16px'
-      // }).addClass('icon');
-      // $(parent).html(otherIcons[key]);
       $(parent).prop('title', $(this).prop('title'));
       $(this).hide();
     }
