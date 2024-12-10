@@ -909,3 +909,7 @@ html>body  {
   overflow: unset;
   line-height: inherit;
 }
+
+div.issue .attribute .value {
+  overflow: hidden;
+}
