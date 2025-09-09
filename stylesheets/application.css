@@ -403,7 +403,7 @@ div#clockINOUT, div#issueLog, div#notification, div#project-jump{
 
 .toggle-icon{
   position: fixed;
-  top: 140px;
+  top: 120px;
   left: 225px;
   width: 25px;
   height: 25px;
