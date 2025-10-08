@@ -324,11 +324,13 @@ $(document).ready(function(){
     }
     $('#toggle-left').click(function() {
       setNavLeft();
+      updateTitlePosition();
     });
 
     // Toggle Icon right click action
     $('#toggle-right').click(function() {
       setNavRight();
+      updateTitlePosition();
     });
 
     // Add hover class to sideNav
@@ -526,6 +528,7 @@ $(document).ready(function(){
       $(this).prop('class', 'name icon-user');
     })
   }
+  updateTitlePosition();
 });
 
 function initDropdownUI($this){
@@ -669,4 +672,37 @@ function updateOtherIcons(){
       $(this).hide();
     }
   });
+}
+
+function updateTitlePosition() {
+  const $contentH2 = $('#content h2').first();
+  const $tabs = $('#content .tabs');
+  const $queryFormTabs = $('#query_form .tabs');
+  const $mainMenu = $('#main-menu');
+  
+  const pageTitle = 
+    $contentH2.text().trim() || 
+    $('#content .tab-title h2').text().trim() || 
+    $('#left-nav .menu-title h2').text().trim();
+
+  const sideNavOpen = sessionStorage.getItem("showSideNav") !== 'true';
+
+  if (sideNavOpen) {
+    // Side nav open
+    if (!$mainMenu.find('.menu-title').length && pageTitle) {
+      $mainMenu.prepend(`<div class="menu-title"><h2>${pageTitle}</h2></div>`);
+    }
+        
+    if ($('#left-nav').is(':visible')) {
+      $contentH2.hide();
+    }
+    $('#content .tab-title').hide();
+  } else {
+    // Side nav closed
+    $contentH2.show();
+    if (pageTitle && $tabs.length && !$queryFormTabs.length) {
+      $('<div class="tab-title"><h2>' + pageTitle + '</h2></div>').insertBefore($tabs);
+      $contentH2.hide();
+    }
+  }
 }

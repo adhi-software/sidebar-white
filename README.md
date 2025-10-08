@@ -1,6 +1,6 @@
 # sidebar-white
 Sidebar White theme for Redmine
 
-### Release Notes for v1.2
+### Release Notes for v1.3
 
-   - Added Semantic UI dropdown
+   - Moved page header to the side navigation

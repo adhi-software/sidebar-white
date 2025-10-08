@@ -317,7 +317,6 @@ div#clockINOUT, div#issueLog, div#notification, div#project-jump{
   background: #FFFFFF;
   overflow: auto;
   z-index: 100;
-  padding-top: 5px;
 }
 
 #main-menu ul{
@@ -404,7 +403,7 @@ div#clockINOUT, div#issueLog, div#notification, div#project-jump{
 
 .toggle-icon{
   position: fixed;
-  top: 90px;
+  top: 120px;
   left: 225px;
   width: 25px;
   height: 25px;
@@ -565,6 +564,11 @@ h1, h2, h3, h4, h5, h6 {
 
 #content h1, h2, h3, h4, h5, h6 {
   color: #172b4d;
+}
+
+#content h2 {
+  margin: 0px;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -912,4 +916,18 @@ html>body  {
 
 div.issue .attribute .value {
   overflow: hidden;
+}
+
+.tab-title {
+  float: left;
+  padding-top: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+#main-menu .menu-title {
+  text-align: center;
+  padding: 10px 14px;
+  border-block-end: 1px solid var(--ds-border, #c0c0c0);
+  background: #c0d9ff;
 }
