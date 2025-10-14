@@ -755,7 +755,7 @@ a.icon {
 }
 
 table#materialtable {
-  box-sizing: unset;
+  /* box-sizing: unset; */
 }
 
 #login-form {
