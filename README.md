@@ -1,6 +1,6 @@
-# sidebar-white
-Sidebar White theme for Redmine
+# Sidebar-white
+Sidebar White theme for Redmine 6.1
 
-### Release Notes for v1.3
+### Release Notes for v1.3.1
 
-   - Moved page header to the side navigation
+   - Redmine 6.1 compatibility
