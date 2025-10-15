@@ -755,7 +755,7 @@ a.icon {
 }
 
 table#materialtable {
-  box-sizing: unset;
+  /* box-sizing: unset; */
 }
 
 #login-form {
@@ -930,4 +930,16 @@ div.issue .attribute .value {
   padding: 10px 14px;
   border-block-end: 1px solid var(--ds-border, #c0c0c0);
   background: #c0d9ff;
+}
+
+@media screen and (min-width: 900px) {
+  .mobile-show {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .mobile-hide {
+    display: none !important;
+  }
 }
