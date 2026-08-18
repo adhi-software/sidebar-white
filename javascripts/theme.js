@@ -587,6 +587,7 @@ function initDropdownUI($this){
   const $allDDs = $($this).find('select');
   $allDDs.each(function(){
     if($(this).is('select')
+      && $(this).is(':visible')
       && !$(this).hasClass('ui dropdown') // don't re-run setup on an already-initialized dropdown
       && !$(this).hasClass("select2-hidden-accessible")
       && !$(this).hasClass("productItemsDD") // owned by invoice.js's select2() init, not Semantic UI
