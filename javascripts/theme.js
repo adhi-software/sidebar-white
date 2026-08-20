@@ -288,8 +288,14 @@ $(document).ready(function(){
             $parent.remove();
             $target.dropdown({ placeholder: false });
           } else {
+            // $target.dropdown('clear');
+            // $parent.removeClass('multiple');
+
             $target.dropdown('clear');
+            $parent.children('.ui.label').remove(); // new class 'multiple' adds a label for each selected item, so remove them when switching back to single select
             $parent.removeClass('multiple');
+            scheduleReconcile();
+
           }
         }
         // Set DD UI for hidden dropdown when visible
