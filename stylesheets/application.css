@@ -1091,3 +1091,33 @@ div.issue .attribute .value {
 .top-menu__links ul {
   align-items: center;
 }
+
+
+/* Fix #17 - My Page Add dropdown layout */
+
+body.controller-my.action-page #content > .contextual {
+  float: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 0 10px 0;
+  padding: 0;
+  width: 100%;
+}
+
+body.controller-my.action-page #block-form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin: 0;
+}
+
+body.controller-my.action-page #block-select {
+  width: auto;
+}
+
+body.controller-my.action-page #content .splitcontent {
+  clear: both;
+  width: 100%;
+}
